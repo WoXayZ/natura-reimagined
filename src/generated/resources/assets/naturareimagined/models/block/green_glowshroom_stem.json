@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "end": "naturareimagined:block/green_glowshroom_stem",
+    "particle": "naturareimagined:block/green_glowshroom_stem",
+    "side": "naturareimagined:block/green_glowshroom_stem"
+  }
+}

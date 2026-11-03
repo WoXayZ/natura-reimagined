@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bluebells": {
+      "conditions": {
+        "items": [
+          {
+            "items": "naturareimagined:bluebells"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:blue_dye_from_bluebells"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bluebells"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:blue_dye_from_bluebells"
+    ]
+  }
+}

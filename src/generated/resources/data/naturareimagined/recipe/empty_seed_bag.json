@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "S S",
+    "SPS",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:empty_seed_bag"
+  }
+}

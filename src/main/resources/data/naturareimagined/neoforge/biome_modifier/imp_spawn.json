@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_nether",
+  "spawners": [
+    {
+      "type": "naturareimagined:imp",
+      "weight": 10,
+      "minCount": 8,
+      "maxCount": 12
+    }
+  ]
+}

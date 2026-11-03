@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "heated=false,moisture=0": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=false,moisture=1": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=false,moisture=2": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=false,moisture=3": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=false,moisture=4": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=false,moisture=5": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=false,moisture=6": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=false,moisture=7": {
+      "model": "naturareimagined:block/tainted_farmland_wet"
+    },
+    "heated=true,moisture=0": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=true,moisture=1": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=true,moisture=2": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=true,moisture=3": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=true,moisture=4": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=true,moisture=5": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=true,moisture=6": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    },
+    "heated=true,moisture=7": {
+      "model": "naturareimagined:block/tainted_farmland_dry"
+    }
+  }
+}

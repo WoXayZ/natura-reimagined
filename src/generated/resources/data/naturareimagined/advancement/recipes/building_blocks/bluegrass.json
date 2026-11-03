@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:bluegrass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_topiary": {
+      "conditions": {
+        "items": [
+          {
+            "items": "naturareimagined:topiary_grass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_topiary"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:bluegrass"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "naturareimagined:barley_seed_bag"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "id": "naturareimagined:barley_seeds"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "naturareimagined:config_enabled",
+      "key": "enableWheatFlourRecipe"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:wheat_flour"
+  }
+}

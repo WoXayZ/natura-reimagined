@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_imp_leather": {
+      "conditions": {
+        "items": [
+          {
+            "items": "naturareimagined:imp_leather"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:leather_from_imp_leather"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_imp_leather"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:leather_from_imp_leather"
+    ]
+  }
+}

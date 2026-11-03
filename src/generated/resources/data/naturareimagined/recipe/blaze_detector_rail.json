@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "R": {
+      "item": "naturareimagined:blaze_rail"
+    }
+  },
+  "pattern": [
+    "R R",
+    "RPR",
+    "R R"
+  ],
+  "result": {
+    "count": 6,
+    "id": "naturareimagined:blaze_detector_rail"
+  }
+}

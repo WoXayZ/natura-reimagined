@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "B": {
+      "item": "minecraft:blaze_rod"
+    },
+    "C": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BCB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:blaze_hopper"
+  }
+}

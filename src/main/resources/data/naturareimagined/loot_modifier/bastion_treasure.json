@@ -1,0 +1,11 @@
+{
+  "type": "naturareimagined:chest_extra",
+  "nether": true,
+  "chance": 0.2,
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/bastion_treasure"
+    }
+  ]
+}

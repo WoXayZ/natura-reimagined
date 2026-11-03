@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "naturareimagined:imp_leather"
+    }
+  },
+  "pattern": [
+    "L L",
+    "L L"
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:imp_boots"
+  }
+}

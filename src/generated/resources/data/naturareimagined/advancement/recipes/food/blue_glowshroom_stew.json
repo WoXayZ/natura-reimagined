@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glowshroom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "naturareimagined:blue_glowshroom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:blue_glowshroom_stew"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glowshroom"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:blue_glowshroom_stew"
+    ]
+  }
+}

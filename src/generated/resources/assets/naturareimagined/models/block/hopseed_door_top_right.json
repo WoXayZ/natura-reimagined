@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "naturareimagined:block/hopseed_door_bottom",
+    "top": "naturareimagined:block/hopseed_door_top"
+  }
+}

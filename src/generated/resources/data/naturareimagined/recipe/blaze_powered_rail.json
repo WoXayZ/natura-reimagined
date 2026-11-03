@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "R": {
+      "item": "naturareimagined:blaze_rail"
+    }
+  },
+  "pattern": [
+    "R R",
+    "RGR",
+    "R R"
+  ],
+  "result": {
+    "count": 6,
+    "id": "naturareimagined:blaze_powered_rail"
+  }
+}

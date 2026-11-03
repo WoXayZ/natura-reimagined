@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "naturareimagined:block/hopseed_slab"
+    },
+    "type=double": {
+      "model": "naturareimagined:block/hopseed_planks"
+    },
+    "type=top": {
+      "model": "naturareimagined:block/hopseed_slab_top"
+    }
+  }
+}

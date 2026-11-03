@@ -1,0 +1,14 @@
+{
+  "type": "naturareimagined:stacked_bush",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "naturareimagined:blueberry",
+        "Properties": {
+          "age": "0"
+        }
+      }
+    }
+  }
+}

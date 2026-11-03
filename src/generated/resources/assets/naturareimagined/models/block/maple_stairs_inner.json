@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "naturareimagined:block/maple_planks",
+    "side": "naturareimagined:block/maple_planks",
+    "top": "naturareimagined:block/maple_planks"
+  }
+}

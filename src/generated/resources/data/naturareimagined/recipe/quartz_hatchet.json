@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": {
+      "item": "minecraft:quartz"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M ",
+    "SM"
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:quartz_hatchet"
+  }
+}

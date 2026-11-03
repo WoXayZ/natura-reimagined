@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "naturareimagined:cotton_seeds"
+    },
+    "E": {
+      "item": "naturareimagined:empty_seed_bag"
+    }
+  },
+  "pattern": [
+    "###",
+    "#E#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:cotton_seed_bag"
+  }
+}

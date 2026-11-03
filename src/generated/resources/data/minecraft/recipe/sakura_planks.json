@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "naturareimagined:sakura_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "naturareimagined:sakura_planks"
+  }
+}

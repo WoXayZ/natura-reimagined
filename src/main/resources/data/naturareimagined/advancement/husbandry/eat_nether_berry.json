@@ -1,0 +1,62 @@
+{
+  "parent": "naturareimagined:husbandry/obtain_sapling",
+  "display": {
+    "icon": {
+      "id": "naturareimagined:blight_berries",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.naturareimagined.nether_berry.title"
+    },
+    "description": {
+      "translate": "advancements.naturareimagined.nether_berry.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "blight_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:blight_berries"
+        }
+      }
+    },
+    "dusk_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:dusk_berries"
+        }
+      }
+    },
+    "sky_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:sky_berries"
+        }
+      }
+    },
+    "sting_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:sting_berries"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blight_berries",
+      "dusk_berries",
+      "sky_berries",
+      "sting_berries"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

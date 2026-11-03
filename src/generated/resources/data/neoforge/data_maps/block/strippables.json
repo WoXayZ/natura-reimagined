@@ -1,0 +1,82 @@
+{
+  "values": {
+    "naturareimagined:amaranth_log": {
+      "stripped_block": "naturareimagined:stripped_amaranth_log"
+    },
+    "naturareimagined:amaranth_wood": {
+      "stripped_block": "naturareimagined:stripped_amaranth_wood"
+    },
+    "naturareimagined:bloodwood_log": {
+      "stripped_block": "naturareimagined:stripped_bloodwood_log"
+    },
+    "naturareimagined:bloodwood_wood": {
+      "stripped_block": "naturareimagined:stripped_bloodwood_wood"
+    },
+    "naturareimagined:darkwood_log": {
+      "stripped_block": "naturareimagined:stripped_darkwood_log"
+    },
+    "naturareimagined:darkwood_wood": {
+      "stripped_block": "naturareimagined:stripped_darkwood_wood"
+    },
+    "naturareimagined:eucalyptus_log": {
+      "stripped_block": "naturareimagined:stripped_eucalyptus_log"
+    },
+    "naturareimagined:eucalyptus_wood": {
+      "stripped_block": "naturareimagined:stripped_eucalyptus_wood"
+    },
+    "naturareimagined:fusewood_log": {
+      "stripped_block": "naturareimagined:stripped_fusewood_log"
+    },
+    "naturareimagined:fusewood_wood": {
+      "stripped_block": "naturareimagined:stripped_fusewood_wood"
+    },
+    "naturareimagined:ghostwood_log": {
+      "stripped_block": "naturareimagined:stripped_ghostwood_log"
+    },
+    "naturareimagined:ghostwood_wood": {
+      "stripped_block": "naturareimagined:stripped_ghostwood_wood"
+    },
+    "naturareimagined:hopseed_log": {
+      "stripped_block": "naturareimagined:stripped_hopseed_log"
+    },
+    "naturareimagined:hopseed_wood": {
+      "stripped_block": "naturareimagined:stripped_hopseed_wood"
+    },
+    "naturareimagined:maple_log": {
+      "stripped_block": "naturareimagined:stripped_maple_log"
+    },
+    "naturareimagined:maple_wood": {
+      "stripped_block": "naturareimagined:stripped_maple_wood"
+    },
+    "naturareimagined:redwood_log": {
+      "stripped_block": "naturareimagined:stripped_redwood_log"
+    },
+    "naturareimagined:redwood_wood": {
+      "stripped_block": "naturareimagined:stripped_redwood_wood"
+    },
+    "naturareimagined:sakura_log": {
+      "stripped_block": "naturareimagined:stripped_sakura_log"
+    },
+    "naturareimagined:sakura_wood": {
+      "stripped_block": "naturareimagined:stripped_sakura_wood"
+    },
+    "naturareimagined:silverbell_log": {
+      "stripped_block": "naturareimagined:stripped_silverbell_log"
+    },
+    "naturareimagined:silverbell_wood": {
+      "stripped_block": "naturareimagined:stripped_silverbell_wood"
+    },
+    "naturareimagined:tiger_log": {
+      "stripped_block": "naturareimagined:stripped_tiger_log"
+    },
+    "naturareimagined:tiger_wood": {
+      "stripped_block": "naturareimagined:stripped_tiger_wood"
+    },
+    "naturareimagined:willow_log": {
+      "stripped_block": "naturareimagined:stripped_willow_log"
+    },
+    "naturareimagined:willow_wood": {
+      "stripped_block": "naturareimagined:stripped_willow_wood"
+    }
+  }
+}

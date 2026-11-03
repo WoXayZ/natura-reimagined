@@ -1,0 +1,11 @@
+{
+  "type": "naturareimagined:chest_extra",
+  "nether": false,
+  "chance": 0.3,
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "naturareimagined:nether_wart_seed_bag"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:nether_wart"
+  }
+}

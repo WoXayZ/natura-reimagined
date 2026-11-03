@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "naturareimagined:block/purple_glowshroom_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "naturareimagined:block/purple_glowshroom_stem"
+    },
+    "axis=z": {
+      "model": "naturareimagined:block/purple_glowshroom_stem",
+      "x": 90
+    }
+  }
+}

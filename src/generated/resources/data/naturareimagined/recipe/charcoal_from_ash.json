@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    },
+    {
+      "item": "naturareimagined:ash_cloud"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:charcoal"
+  }
+}

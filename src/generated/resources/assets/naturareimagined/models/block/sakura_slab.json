@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "naturareimagined:block/sakura_planks",
+    "side": "naturareimagined:block/sakura_planks",
+    "top": "naturareimagined:block/sakura_planks"
+  }
+}

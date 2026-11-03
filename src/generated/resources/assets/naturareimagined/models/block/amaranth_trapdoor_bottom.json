@@ -1,0 +1,179 @@
+{
+  "parent": "minecraft:block/thin_block",
+  "elements": [
+    {
+      "faces": {
+        "east": {
+          "cullface": "east",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "up": {
+          "texture": "#texture"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        }
+      },
+      "from": [
+        0,
+        2,
+        0
+      ],
+      "to": [
+        16,
+        3,
+        16
+      ]
+    },
+    {
+      "faces": {
+        "east": {
+          "cullface": "east",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            1.0,
+            16.0,
+            2.0
+          ]
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            1.0,
+            16.0,
+            2.0
+          ]
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            1.0,
+            16.0,
+            2.0
+          ]
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            1.0,
+            16.0,
+            2.0
+          ]
+        }
+      },
+      "from": [
+        0,
+        1,
+        0
+      ],
+      "to": [
+        16,
+        2,
+        16
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#texture"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#texture",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            1.0
+          ]
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ]
+    }
+  ],
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "naturareimagined:block/amaranth_trapdoor",
+    "texture": "naturareimagined:block/amaranth_trapdoor"
+  }
+}

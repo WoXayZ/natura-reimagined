@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "naturareimagined:block/silverbell_pressure_plate"
+    },
+    "powered=true": {
+      "model": "naturareimagined:block/silverbell_pressure_plate_down"
+    }
+  }
+}

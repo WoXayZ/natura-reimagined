@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "N": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NFN",
+    "NNN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:netherrack_furnace"
+  }
+}

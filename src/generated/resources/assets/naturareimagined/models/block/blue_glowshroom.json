@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "cross": "naturareimagined:block/blue_glowshroom",
+    "particle": "naturareimagined:block/blue_glowshroom_skin"
+  }
+}

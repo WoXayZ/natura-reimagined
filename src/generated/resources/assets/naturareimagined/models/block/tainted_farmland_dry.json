@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "naturareimagined:block/tainted_soil",
+    "top": "naturareimagined:block/tainted_farmland_heated"
+  }
+}

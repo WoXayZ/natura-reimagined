@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_heat_sand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "naturareimagined:heat_sand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:heat_glass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_heat_sand"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:heat_glass"
+    ]
+  }
+}

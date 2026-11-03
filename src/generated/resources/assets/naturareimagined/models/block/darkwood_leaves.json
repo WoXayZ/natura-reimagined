@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "naturareimagined:block/darkwood_leaves"
+  }
+}

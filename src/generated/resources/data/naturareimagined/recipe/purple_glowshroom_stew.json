@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "naturareimagined:purple_glowshroom"
+    },
+    {
+      "item": "naturareimagined:purple_glowshroom"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:purple_glowshroom_stew"
+  }
+}

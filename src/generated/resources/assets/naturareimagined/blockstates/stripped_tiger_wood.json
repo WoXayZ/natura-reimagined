@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "naturareimagined:block/stripped_tiger_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "naturareimagined:block/stripped_tiger_wood"
+    },
+    "axis=z": {
+      "model": "naturareimagined:block/stripped_tiger_wood_horizontal",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "naturareimagined:imp_leather"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "L L",
+    "L L"
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:imp_leggings"
+  }
+}

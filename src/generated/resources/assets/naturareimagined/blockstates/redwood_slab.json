@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "naturareimagined:block/redwood_slab"
+    },
+    "type=double": {
+      "model": "naturareimagined:block/redwood_planks"
+    },
+    "type=top": {
+      "model": "naturareimagined:block/redwood_slab_top"
+    }
+  }
+}

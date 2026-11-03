@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "naturareimagined:block/hopseed_planks",
+    "side": "naturareimagined:block/hopseed_planks",
+    "top": "naturareimagined:block/hopseed_planks"
+  }
+}

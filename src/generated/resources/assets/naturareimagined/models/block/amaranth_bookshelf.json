@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "naturareimagined:block/amaranth_planks",
+    "side": "naturareimagined:block/amaranth_bookshelf"
+  }
+}

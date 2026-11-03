@@ -1,0 +1,37 @@
+{
+  "type": "naturareimagined:special_tree",
+  "config": {
+    "flowering": {
+      "Name": "naturareimagined:bloodwood_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "fruit": {
+      "Name": "naturareimagined:bloodwood_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "kind": "bloodwood",
+    "leaves": {
+      "Name": "naturareimagined:bloodwood_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "log": {
+      "Name": "naturareimagined:bloodwood_log",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "natural": false
+  }
+}

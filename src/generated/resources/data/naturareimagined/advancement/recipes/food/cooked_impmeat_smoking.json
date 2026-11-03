@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw": {
+      "conditions": {
+        "items": [
+          {
+            "items": "naturareimagined:raw_impmeat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:cooked_impmeat_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:cooked_impmeat_smoking"
+    ]
+  }
+}

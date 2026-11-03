@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "naturareimagined:block/maple_planks",
+    "side": "naturareimagined:block/maple_bookshelf"
+  }
+}

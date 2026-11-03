@@ -1,0 +1,103 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#cocoa",
+          "uv": [
+            0.0,
+            0.0,
+            7.0,
+            7.0
+          ]
+        },
+        "east": {
+          "texture": "#cocoa",
+          "uv": [
+            8.0,
+            4.0,
+            16.0,
+            13.0
+          ]
+        },
+        "north": {
+          "texture": "#cocoa",
+          "uv": [
+            8.0,
+            4.0,
+            16.0,
+            13.0
+          ]
+        },
+        "south": {
+          "texture": "#cocoa",
+          "uv": [
+            8.0,
+            4.0,
+            16.0,
+            13.0
+          ]
+        },
+        "up": {
+          "texture": "#cocoa",
+          "uv": [
+            0.0,
+            0.0,
+            7.0,
+            7.0
+          ]
+        },
+        "west": {
+          "texture": "#cocoa",
+          "uv": [
+            8.0,
+            4.0,
+            16.0,
+            13.0
+          ]
+        }
+      },
+      "from": [
+        4,
+        3,
+        7
+      ],
+      "to": [
+        12,
+        12,
+        15
+      ]
+    },
+    {
+      "faces": {
+        "east": {
+          "texture": "#cocoa",
+          "uv": [
+            16.0,
+            0.0,
+            12.0,
+            4.0
+          ]
+        },
+        "west": {
+          "texture": "#cocoa"
+        }
+      },
+      "from": [
+        8,
+        12,
+        12
+      ],
+      "to": [
+        8,
+        16,
+        16
+      ]
+    }
+  ],
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cocoa": "naturareimagined:block/saguaro_stage2",
+    "particle": "naturareimagined:block/saguaro_stage2"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_nether",
+  "spawners": [
+    {
+      "type": "naturareimagined:nitro_creeper",
+      "weight": 8,
+      "minCount": 4,
+      "maxCount": 6
+    }
+  ]
+}

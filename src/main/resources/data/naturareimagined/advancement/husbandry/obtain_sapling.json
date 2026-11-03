@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "display": {
+    "icon": {
+      "id": "naturareimagined:maple_sapling",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.naturareimagined.sapling.title"
+    },
+    "description": {
+      "translate": "advancements.naturareimagined.sapling.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "sapling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#naturareimagined:saplings"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "sapling"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

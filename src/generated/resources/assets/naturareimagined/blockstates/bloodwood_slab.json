@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "naturareimagined:block/bloodwood_slab"
+    },
+    "type=double": {
+      "model": "naturareimagined:block/bloodwood_planks"
+    },
+    "type=top": {
+      "model": "naturareimagined:block/bloodwood_slab_top"
+    }
+  }
+}

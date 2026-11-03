@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "down": "naturareimagined:block/green_glowshroom_inside",
+    "east": "naturareimagined:block/green_glowshroom_skin",
+    "north": "naturareimagined:block/green_glowshroom_skin",
+    "particle": "naturareimagined:block/green_glowshroom_skin",
+    "south": "naturareimagined:block/green_glowshroom_skin",
+    "up": "naturareimagined:block/green_glowshroom_skin",
+    "west": "naturareimagined:block/green_glowshroom_skin"
+  }
+}

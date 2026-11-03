@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "naturareimagined:block/autumnal_grass"
+    },
+    "snowy=true": {
+      "model": "naturareimagined:block/autumnal_grass_snowy"
+    }
+  }
+}

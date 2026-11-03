@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "naturareimagined:rasp_berries"
+    },
+    {
+      "item": "naturareimagined:blue_berries"
+    },
+    {
+      "item": "naturareimagined:black_berries"
+    },
+    {
+      "item": "naturareimagined:malo_berries"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "naturareimagined:berry_medley"
+  }
+}

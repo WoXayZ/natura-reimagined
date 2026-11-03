@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "naturareimagined:sulfur_powder"
+    },
+    {
+      "item": "naturareimagined:sulfur_powder"
+    },
+    {
+      "item": "naturareimagined:sulfur_powder"
+    },
+    {
+      "item": "naturareimagined:sulfur_powder"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:gunpowder"
+  }
+}

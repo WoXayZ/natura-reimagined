@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "naturareimagined:block/tiger_door_bottom",
+    "top": "naturareimagined:block/tiger_door_top"
+  }
+}

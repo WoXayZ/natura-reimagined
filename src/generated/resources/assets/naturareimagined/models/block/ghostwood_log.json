@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "naturareimagined:block/ghostwood_log_top",
+    "side": "naturareimagined:block/ghostwood_log"
+  }
+}

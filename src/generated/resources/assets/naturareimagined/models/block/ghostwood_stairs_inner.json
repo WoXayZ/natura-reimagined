@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "naturareimagined:block/ghostwood_planks",
+    "side": "naturareimagined:block/ghostwood_planks",
+    "top": "naturareimagined:block/ghostwood_planks"
+  }
+}

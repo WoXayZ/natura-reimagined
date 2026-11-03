@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "naturareimagined:blaze_rail"
+    },
+    "S": {
+      "item": "minecraft:redstone"
+    },
+    "T": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    "RSR",
+    "RTR",
+    "RSR"
+  ],
+  "result": {
+    "count": 6,
+    "id": "naturareimagined:blaze_activator_rail"
+  }
+}

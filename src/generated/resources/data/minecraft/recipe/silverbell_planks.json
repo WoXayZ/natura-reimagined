@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "naturareimagined:silverbell_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "naturareimagined:silverbell_planks"
+  }
+}

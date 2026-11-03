@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_contents": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:carrot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:carrot_seed_bag"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_contents"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:carrot_seed_bag"
+    ]
+  }
+}

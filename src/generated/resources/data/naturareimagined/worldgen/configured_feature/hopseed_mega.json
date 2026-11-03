@@ -1,0 +1,37 @@
+{
+  "type": "naturareimagined:special_tree",
+  "config": {
+    "flowering": {
+      "Name": "naturareimagined:hopseed_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "fruit": {
+      "Name": "naturareimagined:hopseed_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "kind": "hopseed_mega",
+    "leaves": {
+      "Name": "naturareimagined:hopseed_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "log": {
+      "Name": "naturareimagined:hopseed_log",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "natural": false
+  }
+}

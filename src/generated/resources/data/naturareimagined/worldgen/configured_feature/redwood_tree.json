@@ -1,0 +1,37 @@
+{
+  "type": "naturareimagined:special_tree",
+  "config": {
+    "flowering": {
+      "Name": "naturareimagined:redwood_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "fruit": {
+      "Name": "naturareimagined:redwood_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "kind": "redwood",
+    "leaves": {
+      "Name": "naturareimagined:redwood_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "log": {
+      "Name": "naturareimagined:redwood_log",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "natural": false
+  }
+}

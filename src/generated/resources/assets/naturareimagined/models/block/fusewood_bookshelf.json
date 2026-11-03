@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "naturareimagined:block/fusewood_planks",
+    "side": "naturareimagined:block/fusewood_bookshelf"
+  }
+}

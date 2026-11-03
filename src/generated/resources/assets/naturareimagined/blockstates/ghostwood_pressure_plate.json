@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "naturareimagined:block/ghostwood_pressure_plate"
+    },
+    "powered=true": {
+      "model": "naturareimagined:block/ghostwood_pressure_plate_down"
+    }
+  }
+}

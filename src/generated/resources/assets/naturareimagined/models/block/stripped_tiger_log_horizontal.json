@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "naturareimagined:block/stripped_tiger_log_top",
+    "side": "naturareimagined:block/stripped_tiger_log"
+  }
+}

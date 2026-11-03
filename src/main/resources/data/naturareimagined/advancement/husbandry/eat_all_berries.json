@@ -1,0 +1,112 @@
+{
+  "parent": "naturareimagined:husbandry/eat_nether_berry",
+  "display": {
+    "icon": {
+      "id": "naturareimagined:berry_medley",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.naturareimagined.all_berries.title"
+    },
+    "description": {
+      "translate": "advancements.naturareimagined.all_berries.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "rasp_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:rasp_berries"
+        }
+      }
+    },
+    "blue_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:blue_berries"
+        }
+      }
+    },
+    "black_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:black_berries"
+        }
+      }
+    },
+    "malo_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:malo_berries"
+        }
+      }
+    },
+    "blight_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:blight_berries"
+        }
+      }
+    },
+    "dusk_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:dusk_berries"
+        }
+      }
+    },
+    "sky_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:sky_berries"
+        }
+      }
+    },
+    "sting_berries": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "naturareimagined:sting_berries"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "rasp_berries"
+    ],
+    [
+      "blue_berries"
+    ],
+    [
+      "black_berries"
+    ],
+    [
+      "malo_berries"
+    ],
+    [
+      "blight_berries"
+    ],
+    [
+      "dusk_berries"
+    ],
+    [
+      "sky_berries"
+    ],
+    [
+      "sting_berries"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

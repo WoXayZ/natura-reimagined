@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "naturareimagined:block/fusewood_slab"
+    },
+    "type=double": {
+      "model": "naturareimagined:block/fusewood_planks"
+    },
+    "type=top": {
+      "model": "naturareimagined:block/fusewood_slab_top"
+    }
+  }
+}

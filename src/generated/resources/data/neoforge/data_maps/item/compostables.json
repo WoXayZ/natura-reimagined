@@ -1,0 +1,176 @@
+{
+  "values": {
+    "naturareimagined:amaranth_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:amaranth_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:barley": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "naturareimagined:barley_flour": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "naturareimagined:barley_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:black_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:blight_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:bloodwood_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:bloodwood_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:blue_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:bluebells": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "naturareimagined:cotton": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "naturareimagined:cotton_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:darkwood_flowering_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:darkwood_fruit_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:darkwood_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:darkwood_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:dusk_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:eucalyptus_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:eucalyptus_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:fusewood_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:fusewood_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:ghostwood_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:ghostwood_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:hopseed_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:hopseed_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:malo_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:maple_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:maple_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:rasp_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:redwood_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:redwood_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:sakura_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:sakura_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:silverbell_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:silverbell_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:sky_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:sting_berries": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:tiger_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:tiger_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:wheat_flour": {
+      "can_villager_compost": true,
+      "chance": 0.65
+    },
+    "naturareimagined:willow_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "naturareimagined:willow_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    }
+  }
+}

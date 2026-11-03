@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "display": {
+    "icon": {
+      "id": "naturareimagined:raw_impmeat",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.naturareimagined.breed_imp.title"
+    },
+    "description": {
+      "translate": "advancements.naturareimagined.breed_imp.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

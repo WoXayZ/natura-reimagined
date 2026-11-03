@@ -1,0 +1,23 @@
+{
+  "feature": "naturareimagined:stingberry_bush",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 110
+        },
+        "min_inclusive": {
+          "absolute": 32
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

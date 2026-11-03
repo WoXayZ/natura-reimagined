@@ -1,0 +1,37 @@
+{
+  "type": "naturareimagined:special_tree",
+  "config": {
+    "flowering": {
+      "Name": "naturareimagined:darkwood_flowering_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "fruit": {
+      "Name": "naturareimagined:darkwood_fruit_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "kind": "darkwood",
+    "leaves": {
+      "Name": "naturareimagined:darkwood_leaves",
+      "Properties": {
+        "distance": "7",
+        "persistent": "false",
+        "waterlogged": "false"
+      }
+    },
+    "log": {
+      "Name": "naturareimagined:darkwood_log",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "natural": false
+  }
+}

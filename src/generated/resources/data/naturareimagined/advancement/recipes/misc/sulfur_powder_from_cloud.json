@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sulfur_cloud": {
+      "conditions": {
+        "items": [
+          {
+            "items": "naturareimagined:sulfur_cloud"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "naturareimagined:sulfur_powder_from_cloud"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sulfur_cloud"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "naturareimagined:sulfur_powder_from_cloud"
+    ]
+  }
+}

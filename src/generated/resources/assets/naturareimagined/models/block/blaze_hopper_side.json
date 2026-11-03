@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/hopper_side",
+  "textures": {
+    "inside": "naturareimagined:block/blaze_hopper_inside",
+    "particle": "naturareimagined:block/blaze_hopper_outside",
+    "side": "naturareimagined:block/blaze_hopper_outside",
+    "top": "naturareimagined:block/blaze_hopper_top"
+  }
+}

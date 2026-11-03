@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:block/grass_block_snow",
+  "render_type": "minecraft:cutout_mipped"
+}

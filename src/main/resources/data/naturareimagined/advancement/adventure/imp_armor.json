@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "id": "naturareimagined:imp_chestplate",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.naturareimagined.imp_armor.title"
+    },
+    "description": {
+      "translate": "advancements.naturareimagined.imp_armor.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

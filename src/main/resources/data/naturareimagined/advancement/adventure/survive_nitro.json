@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:adventure/root",
+  "display": {
+    "icon": {
+      "id": "naturareimagined:nitro_creeper_spawn_egg",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.naturareimagined.survive_nitro.title"
+    },
+    "description": {
+      "translate": "advancements.naturareimagined.survive_nitro.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

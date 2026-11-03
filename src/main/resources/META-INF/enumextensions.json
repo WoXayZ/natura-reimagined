@@ -1,0 +1,58 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_MAPLE",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "MAPLE" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_SILVERBELL",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "SILVERBELL" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_AMARANTH",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "AMARANTH" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_TIGER",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "TIGER" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_WILLOW",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "WILLOW" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_EUCALYPTUS",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "EUCALYPTUS" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_HOPSEED",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "HOPSEED" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_SAKURA",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "SAKURA" }
+    },
+    {
+      "enum": "net/minecraft/world/entity/vehicle/Boat$Type",
+      "name": "NATURAREIMAGINED_REDWOOD",
+      "constructor": "(Ljava/util/function/Supplier;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Z)V",
+      "parameters": { "class": "com/naturareimagined/content/wood/NRBoatTypes", "field": "REDWOOD" }
+    }
+  ]
+}
