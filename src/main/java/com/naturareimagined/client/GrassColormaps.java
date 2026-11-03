@@ -11,9 +11,12 @@ import net.minecraft.world.level.biome.Biome;
 
 public final class GrassColormaps {
 
-    public static final net.minecraft.world.level.ColorResolver BLUE_RESOLVER = (biome, x, z) -> blue(biome);
-    public static final net.minecraft.world.level.ColorResolver ORANGE_RESOLVER = (biome, x, z) -> orange(biome);
-    public static final net.minecraft.world.level.ColorResolver TOPIARY_RESOLVER = (biome, x, z) -> topiary(biome);
+    public static final net.minecraft.world.level.ColorResolver BLUE_RESOLVER = (biome, x, z) ->
+            climate(biome, 0.95F, 0.4F) || climate(biome, 0.25F, 0.65F) ? blue(biome) : biome.getGrassColor(x, z);
+    public static final net.minecraft.world.level.ColorResolver ORANGE_RESOLVER = (biome, x, z) ->
+            climate(biome, 0.6F, 0.7F) ? orange(biome) : biome.getGrassColor(x, z);
+    public static final net.minecraft.world.level.ColorResolver TOPIARY_RESOLVER = (biome, x, z) ->
+            climate(biome, 0.9F, 0.95F) ? topiary(biome) : biome.getGrassColor(x, z);
 
     public static final ResourceLocation BLUE = NaturaConstants.id("textures/colormap/blue_grass.png");
     public static final ResourceLocation ORANGE = NaturaConstants.id("textures/colormap/orange_grass.png");
@@ -52,6 +55,11 @@ public final class GrassColormaps {
 
     public static int topiaryItem() {
         return sample(topiary, 0.8, 0.4);
+    }
+
+    private static boolean climate(Biome biome, float temperature, float downfall) {
+        return Math.abs(biome.getBaseTemperature() - temperature) < 0.01F
+                && Math.abs(biome.getModifiedClimateSettings().downfall() - downfall) < 0.01F;
     }
 
     private static int sample(int[] map, Biome biome) {

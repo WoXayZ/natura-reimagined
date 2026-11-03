@@ -1,0 +1,24 @@
+{
+  "feature": "naturareimagined:redwood_mega",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 1
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "naturareimagined:clear_trunk",
+      "height": 36,
+      "radius": 9
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

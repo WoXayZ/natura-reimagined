@@ -20,6 +20,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
 @EventBusSubscriber(modid = NaturaConstants.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public final class NRClient {
@@ -78,6 +79,22 @@ public final class NRClient {
         event.registerEntityRenderer(NRContent.HEATSCAR.get(), context -> new NREntityRenderers.Heatscar<>(context));
         event.registerEntityRenderer(NRContent.BABY_HEATSCAR.get(), context -> new NREntityRenderers.Heatscar<>(context));
         event.registerEntityRenderer(NRContent.NITRO.get(), NREntityRenderers.Nitro::new);
+        event.registerEntityRenderer(NRContent.SAKURA_FOX.get(), NREntityRenderers.SakuraFox::new);
+        event.registerEntityRenderer(NRContent.AMARANTH_BEE.get(), NREntityRenderers.AmaranthBee::new);
+        event.registerEntityRenderer(NRContent.WILLOW_FROG.get(), NREntityRenderers.WillowFrog::new);
+        event.registerEntityRenderer(NRContent.ASHEN_SKELETON.get(), NREntityRenderers.Ashen::new);
+        event.registerEntityRenderer(NRContent.GHOST_BAT.get(), NREntityRenderers::ghost);
+        event.registerEntityRenderer(NRContent.EMBER_BAT.get(), NREntityRenderers::ember);
+        event.registerEntityRenderer(NRContent.GREEN_GLOWSHROOM_COW.get(), NREntityRenderers.GlowshroomCow::new);
+        event.registerEntityRenderer(NRContent.BLUE_GLOWSHROOM_COW.get(), NREntityRenderers.GlowshroomCow::new);
+        event.registerEntityRenderer(NRContent.PURPLE_GLOWSHROOM_COW.get(), NREntityRenderers.GlowshroomCow::new);
+        event.registerEntityRenderer(NRContent.CINDERLIN.get(), NREntityRenderers.Cinderlin::new);
+        event.registerEntityRenderer(NRContent.HELLHOUND.get(), NREntityRenderers.Hellhound::new);
+    }
+
+    @SubscribeEvent
+    public static void particles(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(NRContent.PYREFLY_PARTICLE.get(), PyreflyParticle.Provider::new);
     }
 
     @SubscribeEvent

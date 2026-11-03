@@ -10,6 +10,7 @@ import com.naturareimagined.registry.NRItems;
 import com.naturareimagined.registry.NRPlants;
 import com.naturareimagined.registry.NRTabs;
 import com.naturareimagined.registry.NRWoods;
+import com.naturareimagined.world.NRRegions;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FireBlock;
@@ -41,7 +42,10 @@ public final class NaturaReimagined {
     }
 
     private static void commonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(NaturaReimagined::registerBlockInteractions);
+        event.enqueueWork(() -> {
+            registerBlockInteractions();
+            NRRegions.register();
+        });
     }
 
     private static void registerBlockInteractions() {

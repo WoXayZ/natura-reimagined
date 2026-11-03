@@ -89,6 +89,12 @@ public final class NRBlockStateProvider extends BlockStateProvider {
     private void contentBlocks() {
         simpleBlockWithItem(NRContent.GHOST_NYLIUM.get(), models().cubeBottomTop("ghost_nylium",
                 blockTexture("ghost_nylium_side"), mcLoc("block/netherrack"), blockTexture("ghost_nylium")));
+        simpleBlockWithItem(NRContent.BLOOD_NYLIUM.get(), models().cubeBottomTop("blood_nylium",
+                blockTexture("blood_nylium_side"), mcLoc("block/netherrack"), blockTexture("blood_nylium")));
+        simpleBlockWithItem(NRContent.DARK_NYLIUM.get(), models().cubeBottomTop("dark_nylium",
+                blockTexture("dark_nylium_side"), mcLoc("block/netherrack"), blockTexture("dark_nylium")));
+        simpleBlockWithItem(NRContent.FUSE_NYLIUM.get(), models().cubeBottomTop("fuse_nylium",
+                blockTexture("fuse_nylium_side"), mcLoc("block/netherrack"), blockTexture("fuse_nylium")));
         simpleBlockWithItem(NRContent.HEAT_SAND.get(), cubeAll(NRContent.HEAT_SAND.get()));
         simpleBlockWithItem(NRContent.TAINTED_SOIL.get(), cubeAll(NRContent.TAINTED_SOIL.get()));
         ModelFile dryFarm = models().withExistingParent("tainted_farmland_dry", mcLoc("block/template_farmland"))

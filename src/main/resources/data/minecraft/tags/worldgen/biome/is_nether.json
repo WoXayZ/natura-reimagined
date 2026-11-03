@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "naturareimagined:ghostwood_forest",
+    "naturareimagined:bloodwood_wilds",
+    "naturareimagined:darkwood_thicket",
+    "naturareimagined:fusewood_wastes",
+    "naturareimagined:fungal_depths"
+  ]
+}

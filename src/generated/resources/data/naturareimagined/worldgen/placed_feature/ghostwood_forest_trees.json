@@ -1,0 +1,17 @@
+{
+  "feature": "naturareimagined:ghostwood_tree",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 4
+    },
+    {
+      "type": "naturareimagined:clear_trunk",
+      "height": 16,
+      "radius": 5
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

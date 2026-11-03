@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:nether_wastes",
+    "naturareimagined:ghostwood_forest",
+    "naturareimagined:fungal_depths"
+  ],
+  "features": "naturareimagined:pyrefly_bush",
+  "step": "vegetal_decoration"
+}

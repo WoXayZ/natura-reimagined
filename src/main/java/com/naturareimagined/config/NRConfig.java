@@ -94,7 +94,7 @@ public final class NRConfig {
         builder.push("mobs");
         SPAWN_IMP = builder.define("spawnImp", true);
         SPAWN_NITRO = builder.define("spawnNitroCreeper", true);
-        SPAWN_HEATSCAR = builder.comment("Heatscar spiders are off by default because they leave babies behind.").define("spawnHeatscar", false);
+        SPAWN_HEATSCAR = builder.define("spawnHeatscar", true);
         HEATSCAR_BABY_MIN = builder.defineInRange("heatscarBabyMin", 2, 0, 8);
         HEATSCAR_BABY_MAX = builder.defineInRange("heatscarBabyMax", 4, 0, 8);
         builder.pop();

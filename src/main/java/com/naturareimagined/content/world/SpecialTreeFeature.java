@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -35,6 +36,9 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
         RandomSource random = context.random();
+        if (netherKind(config.kind()) && NetherSpace.nearBedrock(level, origin, 16)) {
+            return false;
+        }
         boolean placed = switch (config.kind()) {
             case "willow" -> willow(level, origin, random, config);
             case "eucalyptus" -> eucalyptus(level, origin, random, config);
@@ -88,29 +92,43 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
     }
 
     private boolean eucalyptus(WorldGenLevel level, BlockPos origin, RandomSource random, Config config) {
-        int height = 10 + random.nextInt(3);
-        if (!trunk(level, origin, height, config.log())) {
+        int height = 12 + random.nextInt(3);
+        if (blocked(level, origin, 5, 2, height)) {
             return false;
         }
-        Direction[] directions = Direction.Plane.HORIZONTAL.stream().toArray(Direction[]::new);
-        int[] heights = {4, 7};
+        int logTop = height - 3;
+        if (!trunk(level, origin, logTop, config.log())) {
+            return false;
+        }
+        BlockState leaves = leaf(config.leaves());
+        int[] heights = {height / 2, height - 4};
         for (int branchHeight : heights) {
-            for (Direction direction : directions) {
-                BlockPos start = origin.above(branchHeight);
-                for (int length = 1; length <= 2; length++) {
-                    set(level, start.relative(direction, length), config.log());
+            for (Direction direction : Direction.Plane.HORIZONTAL) {
+                BlockPos tip = origin.above(branchHeight);
+                for (int length = 1; length <= 4; length++) {
+                    tip = tip.relative(direction);
+                    if (length == 4 && random.nextBoolean()) {
+                        tip = tip.above();
+                    }
+                    set(level, tip, config.log());
                 }
-                BlockPos end = start.relative(direction, 2);
                 for (int dx = -1; dx <= 1; dx++) {
-                    for (int dy = 0; dy <= 1; dy++) {
+                    for (int dy = -1; dy <= 1; dy++) {
                         for (int dz = -1; dz <= 1; dz++) {
-                            setIfAir(level, end.offset(dx, dy, dz), leaf(config.leaves()));
+                            BlockPos leafPos = tip.offset(dx, dy, dz);
+                            if (Math.abs(leafPos.getX() - origin.getX()) + Math.abs(leafPos.getZ() - origin.getZ()) < 3) {
+                                continue;
+                            }
+                            setIfAir(level, leafPos, leaves);
                         }
                     }
                 }
             }
         }
-        canopy(level, origin.above(height - 1), 2, leaf(config.leaves()));
+        canopy(level, origin.above(height - 2), 2, leaves);
+        for (int y = logTop; y < height; y++) {
+            level.setBlock(origin.above(y), leaves, Block.UPDATE_CLIENTS);
+        }
         return true;
     }
 
@@ -125,6 +143,10 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
             }
         }
         int height = 6 + random.nextInt(2);
+        if (blocked(level, origin, 4, 2, height)) {
+            return false;
+        }
+        int logTop = Math.max(3, height - 3);
         for (BlockPos column : columns) {
             for (int y = 0; y < height; y++) {
                 if (!replaceable(level, column.above(y))) {
@@ -133,11 +155,17 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
             }
         }
         for (BlockPos column : columns) {
-            for (int y = 0; y < height; y++) {
+            for (int y = 0; y < logTop; y++) {
                 level.setBlock(column.above(y), config.log(), Block.UPDATE_CLIENTS);
             }
         }
-        canopy(level, origin.above(height - 1).south().east(), 3, leaf(config.leaves()));
+        BlockState leaves = leaf(config.leaves());
+        canopy(level, origin.above(height - 1).south().east(), 3, leaves);
+        for (BlockPos column : columns) {
+            for (int y = logTop; y < height; y++) {
+                level.setBlock(column.above(y), leaves, Block.UPDATE_CLIENTS);
+            }
+        }
         return true;
     }
 
@@ -148,6 +176,9 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
         int min = NRConfig.REDWOOD_MIN_HEIGHT.get() + (mega ? 12 : 0);
         int max = Math.max(min, NRConfig.REDWOOD_MAX_HEIGHT.get() + (mega ? 16 : 0));
         int height = min + random.nextInt(max - min + 1);
+        if (blocked(level, origin, mega ? 8 : 6, 4, height)) {
+            return false;
+        }
         for (BlockPos column : columns) {
             if (!level.getBlockState(column.below()).isSolidRender(level, column.below())) {
                 return false;
@@ -158,8 +189,9 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
                 }
             }
         }
+        int logTop = Math.max(4, height - 3);
         for (BlockPos column : columns) {
-            for (int y = 0; y < height; y++) {
+            for (int y = 0; y < logTop; y++) {
                 level.setBlock(column.above(y), config.log(), Block.UPDATE_CLIENTS);
             }
         }
@@ -180,6 +212,11 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
                 }
             }
         }
+        for (BlockPos column : columns) {
+            for (int y = logTop; y < height; y++) {
+                level.setBlock(column.above(y), leaves, Block.UPDATE_CLIENTS);
+            }
+        }
         return true;
     }
 
@@ -190,8 +227,7 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
             for (int i = 0; i < depth; i++) {
                 BlockPos pos = at.below(i);
                 BlockState state = level.getBlockState(pos);
-                if (!(state.isAir() || state.is(Blocks.WATER) || state.is(Blocks.DIRT) || state.is(Blocks.MUD)
-                        || state.is(Blocks.GRASS_BLOCK) || state.canBeReplaced())) {
+                if (!(state.isAir() || state.is(Blocks.WATER) || soil(state) || state.canBeReplaced())) {
                     break;
                 }
                 level.setBlock(pos, log, Block.UPDATE_CLIENTS);
@@ -200,7 +236,7 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
         for (int i = 1; i <= 2; i++) {
             BlockPos pos = origin.below(i);
             BlockState state = level.getBlockState(pos);
-            if (state.is(Blocks.DIRT) || state.is(Blocks.MUD) || state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.ROOTED_DIRT)) {
+            if (soil(state)) {
                 level.setBlock(pos, log, Block.UPDATE_CLIENTS);
             }
         }
@@ -208,11 +244,18 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
 
     private boolean ghostwood(WorldGenLevel level, BlockPos origin, RandomSource random, Config config) {
         int height = 8 + random.nextInt(2);
-        if (!trunk(level, origin, height, config.log())) {
+        if (blocked(level, origin, 5, 2, height)) {
+            return false;
+        }
+        int logTop = height - 3;
+        if (!trunk(level, origin, logTop, config.log())) {
             return false;
         }
         BlockState leaves = leaf(config.leaves());
         canopy(level, origin.above(height - 2), 4, leaves);
+        for (int y = logTop; y < height; y++) {
+            level.setBlock(origin.above(y), leaves, Block.UPDATE_CLIENTS);
+        }
         BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
         for (int x = -4; x <= 4; x++) {
             for (int z = -4; z <= 4; z++) {
@@ -239,9 +282,16 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
     private boolean bloodwood(WorldGenLevel level, BlockPos origin, RandomSource random, Config config) {
         BlockPos.MutableBlockPos cursor = origin.mutable();
         BlockPos ceiling = null;
-        for (int y = 0; y < 32; y++) {
+        for (int y = 0; y < 96; y++) {
             cursor.set(origin.getX(), origin.getY() + y, origin.getZ());
-            if (level.getBlockState(cursor).isSolidRender(level, cursor) && replaceable(level, cursor.below())) {
+            BlockState above = level.getBlockState(cursor);
+            if (above.is(Blocks.BEDROCK)) {
+                return false;
+            }
+            if (above.isSolidRender(level, cursor) && replaceable(level, cursor.below())) {
+                if (NetherSpace.nearBedrock(level, cursor, 8)) {
+                    return false;
+                }
                 ceiling = cursor.below().immutable();
                 break;
             }
@@ -249,18 +299,25 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
         if (ceiling == null) {
             return false;
         }
-        int height = 8 + random.nextInt(2);
+        int height = 9 + random.nextInt(3);
+        if (blocked(level, ceiling, 5, height + 2, 1)) {
+            return false;
+        }
         for (int y = 0; y < height; y++) {
             if (!replaceable(level, ceiling.below(y))) {
                 return false;
             }
         }
-        for (int y = 0; y < height; y++) {
+        int logLength = Math.max(4, height - 4);
+        for (int y = 0; y < logLength; y++) {
             level.setBlock(ceiling.below(y), config.log(), Block.UPDATE_CLIENTS);
         }
         BlockState leaves = leaf(config.leaves());
         BlockPos canopy = ceiling.below(height - 2);
         canopy(level, canopy, 4, leaves);
+        for (int y = logLength; y < height; y++) {
+            level.setBlock(ceiling.below(y), leaves, Block.UPDATE_CLIENTS);
+        }
         for (int x = -4; x <= 4; x++) {
             for (int z = -4; z <= 4; z++) {
                 if (Math.abs(x) + Math.abs(z) < 3) {
@@ -306,11 +363,27 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
     }
 
     private boolean blob(WorldGenLevel level, BlockPos origin, RandomSource random, Config config, int height, int radius) {
-        if (!trunk(level, origin, height, config.log())) {
+        if (blocked(level, origin, radius + 3, 2, height + 2)) {
             return false;
         }
-        canopy(level, origin.above(height - 2), radius, leaf(config.leaves()));
+        int logTop = Math.max(3, height - 3);
+        if (!trunk(level, origin, logTop, config.log())) {
+            return false;
+        }
+        BlockState leaves = leaf(config.leaves());
+        canopy(level, origin.above(height - 2), radius, leaves);
+        for (int y = logTop; y < height; y++) {
+            level.setBlock(origin.above(y), leaves, Block.UPDATE_CLIENTS);
+        }
         return true;
+    }
+
+    private static boolean netherKind(String kind) {
+        return kind.equals("bloodwood") || kind.equals("ghostwood") || kind.equals("fusewood") || kind.equals("darkwood");
+    }
+
+    private static boolean soil(BlockState state) {
+        return state.is(BlockTags.DIRT) || state.is(BlockTags.NYLIUM) || state.is(Blocks.NETHERRACK) || state.is(Blocks.MUD);
     }
 
     private boolean trunk(WorldGenLevel level, BlockPos origin, int height, BlockState log) {
@@ -354,10 +427,31 @@ public class SpecialTreeFeature extends Feature<SpecialTreeFeature.Config> {
         }
     }
 
+    private static boolean blocked(WorldGenLevel level, BlockPos origin, int radius, int down, int up) {
+        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+        for (int x = -radius; x <= radius; x++) {
+            for (int z = -radius; z <= radius; z++) {
+                if (x == 0 && z == 0) {
+                    continue;
+                }
+                for (int y = -down; y <= up; y++) {
+                    cursor.set(origin.getX() + x, origin.getY() + y, origin.getZ() + z);
+                    BlockState state = level.getBlockState(cursor);
+                    if (state.is(BlockTags.LOGS) || state.is(BlockTags.LEAVES) || state.getBlock() instanceof LeavesBlock) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     private static boolean replaceable(LevelAccessor level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.isAir() || state.is(Blocks.WATER) || state.canBeReplaced()
-                || state.getBlock() instanceof LeavesBlock || state.getBlock() instanceof SaplingBlock;
+        if (state.is(BlockTags.LOGS) || state.is(BlockTags.LEAVES) || state.getBlock() instanceof LeavesBlock) {
+            return false;
+        }
+        return state.isAir() || state.is(Blocks.WATER) || state.canBeReplaced() || state.getBlock() instanceof SaplingBlock;
     }
 
     private static BlockState leaf(BlockState state) {

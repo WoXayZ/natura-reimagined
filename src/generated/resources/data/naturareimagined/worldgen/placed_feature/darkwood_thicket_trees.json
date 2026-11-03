@@ -1,0 +1,17 @@
+{
+  "feature": "naturareimagined:darkwood_tree",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 5
+    },
+    {
+      "type": "naturareimagined:clear_trunk",
+      "height": 12,
+      "radius": 5
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

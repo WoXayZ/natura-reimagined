@@ -51,6 +51,10 @@ public final class NRTabs {
                 output.accept(NRPlants.COTTON_SEED_BAG.get());
                 output.accept(NRPlants.BONE_MEAL_BAG.get());
                 output.accept(NRContent.GHOST_NYLIUM.get());
+                output.accept(NRContent.BLOOD_NYLIUM.get());
+                output.accept(NRContent.DARK_NYLIUM.get());
+                output.accept(NRContent.FUSE_NYLIUM.get());
+                output.accept(NRContent.PYREFLY_BUSH.get());
                 output.accept(NRContent.HEAT_SAND.get());
                 output.accept(NRContent.TAINTED_SOIL.get());
                 output.accept(NRContent.TAINTED_FARMLAND.get());
@@ -104,6 +108,17 @@ public final class NRTabs {
                 output.accept(NRContent.HEATSCAR_SPAWN_EGG.get());
                 output.accept(NRContent.BABY_HEATSCAR_SPAWN_EGG.get());
                 output.accept(NRContent.NITRO_SPAWN_EGG.get());
+                output.accept(NRContent.SAKURA_FOX_SPAWN_EGG.get());
+                output.accept(NRContent.AMARANTH_BEE_SPAWN_EGG.get());
+                output.accept(NRContent.WILLOW_FROG_SPAWN_EGG.get());
+                output.accept(NRContent.ASHEN_SKELETON_SPAWN_EGG.get());
+                output.accept(NRContent.GHOST_BAT_SPAWN_EGG.get());
+                output.accept(NRContent.EMBER_BAT_SPAWN_EGG.get());
+                output.accept(NRContent.GREEN_GLOWSHROOM_COW_SPAWN_EGG.get());
+                output.accept(NRContent.BLUE_GLOWSHROOM_COW_SPAWN_EGG.get());
+                output.accept(NRContent.PURPLE_GLOWSHROOM_COW_SPAWN_EGG.get());
+                output.accept(NRContent.CINDERLIN_SPAWN_EGG.get());
+                output.accept(NRContent.HELLHOUND_SPAWN_EGG.get());
             })
             .build());
 
@@ -225,6 +240,10 @@ public final class NRTabs {
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(NRContent.GHOST_NYLIUM.get());
+            event.accept(NRContent.BLOOD_NYLIUM.get());
+            event.accept(NRContent.DARK_NYLIUM.get());
+            event.accept(NRContent.FUSE_NYLIUM.get());
+            event.accept(NRContent.PYREFLY_BUSH.get());
             event.accept(NRContent.HEAT_SAND.get());
             event.accept(NRContent.TAINTED_SOIL.get());
             event.accept(NRContent.THORNVINE.get());
@@ -267,6 +286,17 @@ public final class NRTabs {
             event.accept(NRContent.HEATSCAR_SPAWN_EGG.get());
             event.accept(NRContent.BABY_HEATSCAR_SPAWN_EGG.get());
             event.accept(NRContent.NITRO_SPAWN_EGG.get());
+            event.accept(NRContent.SAKURA_FOX_SPAWN_EGG.get());
+            event.accept(NRContent.AMARANTH_BEE_SPAWN_EGG.get());
+            event.accept(NRContent.WILLOW_FROG_SPAWN_EGG.get());
+            event.accept(NRContent.ASHEN_SKELETON_SPAWN_EGG.get());
+            event.accept(NRContent.GHOST_BAT_SPAWN_EGG.get());
+            event.accept(NRContent.EMBER_BAT_SPAWN_EGG.get());
+            event.accept(NRContent.GREEN_GLOWSHROOM_COW_SPAWN_EGG.get());
+            event.accept(NRContent.BLUE_GLOWSHROOM_COW_SPAWN_EGG.get());
+            event.accept(NRContent.PURPLE_GLOWSHROOM_COW_SPAWN_EGG.get());
+            event.accept(NRContent.CINDERLIN_SPAWN_EGG.get());
+            event.accept(NRContent.HELLHOUND_SPAWN_EGG.get());
         }
     }
 }

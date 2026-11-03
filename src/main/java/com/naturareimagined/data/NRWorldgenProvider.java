@@ -7,6 +7,7 @@ import com.naturareimagined.registry.NRContent;
 import com.naturareimagined.registry.NRFeatures;
 import com.naturareimagined.registry.NRPlants;
 import com.naturareimagined.registry.NRWoods;
+import com.naturareimagined.world.NRBiomes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,10 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlace
 import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
+import com.naturareimagined.content.world.ClearTrunkPlacement;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
+import net.minecraft.world.level.levelgen.placement.CountOnEveryLayerPlacement;
+import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
@@ -52,7 +56,8 @@ public final class NRWorldgenProvider extends DatapackBuiltinEntriesProvider {
 
     public static final net.minecraft.core.RegistrySetBuilder BUILDER = new net.minecraft.core.RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, NRWorldgenProvider::configured)
-            .add(Registries.PLACED_FEATURE, NRWorldgenProvider::placed);
+            .add(Registries.PLACED_FEATURE, NRWorldgenProvider::placed)
+            .add(Registries.BIOME, NRBiomes::bootstrap);
 
     public NRWorldgenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(NaturaConstants.MOD_ID));
@@ -90,6 +95,8 @@ public final class NRWorldgenProvider extends DatapackBuiltinEntriesProvider {
         scatter(context, NRContent.THORN_CONFIGURED, NRContent.THORNVINE.get());
         scatter(context, NRContent.TAINTED_CONFIGURED, NRContent.TAINTED_SOIL.get());
         scatter(context, NRContent.HEAT_SAND_CONFIGURED, NRContent.HEAT_SAND.get());
+        context.register(NRBiomes.PYREFLY_CONFIGURED, new ConfiguredFeature<>(NRFeatures.GROUND_PLANT.get(),
+                new SimpleBlockConfiguration(BlockStateProvider.simple(NRContent.PYREFLY_BUSH.get()))));
     }
 
     private static void scatter(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, net.minecraft.world.level.block.Block block) {
@@ -190,6 +197,69 @@ public final class NRWorldgenProvider extends DatapackBuiltinEntriesProvider {
         placeScatter(context, configured, NRContent.THORN_PLACED, NRContent.THORN_CONFIGURED, true);
         placeScatter(context, configured, NRContent.TAINTED_PLACED, NRContent.TAINTED_CONFIGURED, true);
         placeScatter(context, configured, NRContent.HEAT_SAND_PLACED, NRContent.HEAT_SAND_CONFIGURED, true);
+        counted(context, configured, NRBiomes.REDWOOD_TREES, NRWoods.REDWOOD.treeFeature, 2, false, 28, 7);
+        counted(context, configured, NRBiomes.REDWOOD_MEGA, NRWoods.REDWOOD.megaTree, 1, false, 36, 9);
+        counted(context, configured, NRBiomes.REDWOOD_WILD, NRContent.REDWOOD_WILD, 1, false, 28, 7);
+        counted(context, configured, NRBiomes.EUCALYPTUS_TREES, NRWoods.EUCALYPTUS.treeFeature, 4, false, 16, 6);
+        counted(context, configured, NRBiomes.HOPSEED_TREES, NRWoods.HOPSEED.treeFeature, 5, false, 12, 5);
+        counted(context, configured, NRBiomes.SAKURA_TREES, NRWoods.SAKURA.treeFeature, 4, false, 14, 6);
+        counted(context, configured, NRBiomes.MAPLE_TREES, NRWoods.MAPLE.treeFeature, 5, false, 14, 6);
+        counted(context, configured, NRBiomes.SILVERBELL_TREES, NRWoods.SILVERBELL.treeFeature, 4, false, 12, 5);
+        counted(context, configured, NRBiomes.AMARANTH_TREES, NRWoods.AMARANTH.treeFeature, 6, false, 14, 6);
+        counted(context, configured, NRBiomes.TIGER_TREES, NRWoods.TIGER.treeFeature, 5, false, 12, 6);
+        counted(context, configured, NRBiomes.WILLOW_TREES, NRWoods.WILLOW.treeFeature, 3, false, 12, 5);
+        counted(context, configured, NRBiomes.GHOSTWOOD_TREES, NRWoods.GHOSTWOOD.treeFeature, 4, true, 16, 5);
+        counted(context, configured, NRBiomes.BLOODWOOD_TREES, NRWoods.BLOODWOOD.treeFeature, 3, true, 16, 5);
+        counted(context, configured, NRBiomes.DARKWOOD_TREES, NRWoods.DARKWOOD.treeFeature, 5, true, 12, 5);
+        counted(context, configured, NRBiomes.FUSEWOOD_TREES, NRWoods.FUSEWOOD.treeFeature, 2, true, 10, 5);
+        counted(context, configured, NRBiomes.HOPSEED_RASPBERRY, bushConfigured("raspberry"), 4);
+        counted(context, configured, NRBiomes.HOPSEED_BLACKBERRY, bushConfigured("blackberry"), 3);
+        counted(context, configured, NRBiomes.MAPLE_BLACKBERRY, bushConfigured("blackberry"), 3);
+        counted(context, configured, NRBiomes.SILVERBELL_BLUEBELLS, NRPlants.BLUEBELL_CONFIGURED, 5);
+        counted(context, configured, NRBiomes.WILLOW_MALOBERRY, bushConfigured("maloberry"), 4);
+        counted(context, configured, NRBiomes.FUNGAL_GLOWSHROOMS, NRContent.GLOWSHROOM_CONFIGURED, 28, true, 0, 0);
+        context.register(NRBiomes.PYREFLY, new PlacedFeature(configured.getOrThrow(NRBiomes.PYREFLY_CONFIGURED), List.of(
+                RarityFilter.onAverageOnceEvery(2),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(96)),
+                BiomeFilter.biome())));
+        context.register(NRBiomes.PYREFLY_RARE, new PlacedFeature(configured.getOrThrow(NRBiomes.PYREFLY_CONFIGURED), List.of(
+                RarityFilter.onAverageOnceEvery(5),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(96)),
+                BiomeFilter.biome())));
+    }
+
+    private static ResourceKey<ConfiguredFeature<?, ?>> bushConfigured(String blockName) {
+        for (NRPlants.BushPlant bush : NRPlants.BUSHES) {
+            if (bush.blockName().equals(blockName)) {
+                return bush.configured();
+            }
+        }
+        throw new IllegalStateException(blockName);
+    }
+
+    private static void counted(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configured,
+                                ResourceKey<PlacedFeature> placed, ResourceKey<ConfiguredFeature<?, ?>> feature, int count) {
+        counted(context, configured, placed, feature, count, false, 0, 0);
+    }
+
+    private static void counted(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configured,
+                                ResourceKey<PlacedFeature> placed, ResourceKey<ConfiguredFeature<?, ?>> feature, int count,
+                                boolean nether, int clearHeight, int clearRadius) {
+        List<PlacementModifier> modifiers = new ArrayList<>();
+        if (nether) {
+            modifiers.add(CountOnEveryLayerPlacement.of(count));
+        } else {
+            modifiers.add(CountPlacement.of(count));
+            modifiers.add(InSquarePlacement.spread());
+            modifiers.add(PlacementUtils.HEIGHTMAP);
+        }
+        if (clearHeight > 0) {
+            modifiers.add(new ClearTrunkPlacement(clearHeight, clearRadius));
+        }
+        modifiers.add(BiomeFilter.biome());
+        context.register(placed, new PlacedFeature(configured.getOrThrow(feature), modifiers));
     }
 
     private static void placeScatter(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configured,

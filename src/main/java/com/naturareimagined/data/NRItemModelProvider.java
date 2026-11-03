@@ -5,7 +5,9 @@ import com.naturareimagined.content.wood.WoodFamily;
 import com.naturareimagined.registry.NRContent;
 import com.naturareimagined.registry.NRPlants;
 import com.naturareimagined.registry.NRWoods;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -62,13 +64,13 @@ public final class NRItemModelProvider extends ItemModelProvider {
         basicItem(NRContent.PURPLE_GLOWSHROOM_STEW.get());
         basicItem(NRContent.SAGUARO_FRUIT.get());
         basicItem(NRContent.FLINT_AND_BLAZE.get());
-        basicItem(NRContent.QUARTZ_SWORD.get());
-        basicItem(NRContent.QUARTZ_PICKAXE.get());
-        basicItem(NRContent.QUARTZ_AXE.get());
-        basicItem(NRContent.QUARTZ_SHOVEL.get());
-        basicItem(NRContent.QUARTZ_HOE.get());
+        tool(NRContent.QUARTZ_SWORD.get());
+        tool(NRContent.QUARTZ_PICKAXE.get());
+        tool(NRContent.QUARTZ_AXE.get());
+        tool(NRContent.QUARTZ_SHOVEL.get());
+        tool(NRContent.QUARTZ_HOE.get());
         for (var hatchet : NRContent.HATCHETS) {
-            basicItem(hatchet.get());
+            tool(hatchet.get());
         }
         basicItem(NRContent.IMP_HELMET.get());
         basicItem(NRContent.IMP_CHESTPLATE.get());
@@ -78,5 +80,21 @@ public final class NRItemModelProvider extends ItemModelProvider {
         spawnEggItem(NRContent.HEATSCAR_SPAWN_EGG.get());
         spawnEggItem(NRContent.BABY_HEATSCAR_SPAWN_EGG.get());
         spawnEggItem(NRContent.NITRO_SPAWN_EGG.get());
+        spawnEggItem(NRContent.SAKURA_FOX_SPAWN_EGG.get());
+        spawnEggItem(NRContent.AMARANTH_BEE_SPAWN_EGG.get());
+        spawnEggItem(NRContent.WILLOW_FROG_SPAWN_EGG.get());
+        spawnEggItem(NRContent.ASHEN_SKELETON_SPAWN_EGG.get());
+        spawnEggItem(NRContent.GHOST_BAT_SPAWN_EGG.get());
+        spawnEggItem(NRContent.EMBER_BAT_SPAWN_EGG.get());
+        spawnEggItem(NRContent.GREEN_GLOWSHROOM_COW_SPAWN_EGG.get());
+        spawnEggItem(NRContent.BLUE_GLOWSHROOM_COW_SPAWN_EGG.get());
+        spawnEggItem(NRContent.PURPLE_GLOWSHROOM_COW_SPAWN_EGG.get());
+        spawnEggItem(NRContent.CINDERLIN_SPAWN_EGG.get());
+        spawnEggItem(NRContent.HELLHOUND_SPAWN_EGG.get());
+    }
+
+    private void tool(Item item) {
+        String name = BuiltInRegistries.ITEM.getKey(item).getPath();
+        this.withExistingParent(name, "item/handheld").texture("layer0", this.modLoc("item/" + name));
     }
 }

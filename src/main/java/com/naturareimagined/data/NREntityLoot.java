@@ -35,10 +35,37 @@ public final class NREntityLoot extends EntityLootSubProvider {
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))))
                 .withPool(LootPool.lootPool().add(LootItem.lootTableItem(NRContent.SULFUR_POWDER.get())
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+        add(NRContent.SAKURA_FOX.get(), LootTable.lootTable());
+        add(NRContent.AMARANTH_BEE.get(), LootTable.lootTable());
+        add(NRContent.WILLOW_FROG.get(), LootTable.lootTable());
+        add(NRContent.GHOST_BAT.get(), LootTable.lootTable());
+        add(NRContent.EMBER_BAT.get(), LootTable.lootTable());
+        add(NRContent.ASHEN_SKELETON.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.BONE)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))))
+                .withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.ARROW)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+        add(NRContent.GREEN_GLOWSHROOM_COW.get(), beef());
+        add(NRContent.BLUE_GLOWSHROOM_COW.get(), beef());
+        add(NRContent.PURPLE_GLOWSHROOM_COW.get(), beef());
+        add(NRContent.CINDERLIN.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.GOLD_NUGGET)
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+        add(NRContent.HELLHOUND.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.BONE)
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+    }
+
+    private static LootTable.Builder beef() {
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.BEEF)
+                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))));
     }
 
     @Override
     protected Stream<EntityType<?>> getKnownEntityTypes() {
-        return Stream.of(NRContent.IMP.get(), NRContent.HEATSCAR.get(), NRContent.BABY_HEATSCAR.get(), NRContent.NITRO.get());
+        return Stream.of(
+                NRContent.IMP.get(), NRContent.HEATSCAR.get(), NRContent.BABY_HEATSCAR.get(), NRContent.NITRO.get(),
+                NRContent.SAKURA_FOX.get(), NRContent.AMARANTH_BEE.get(), NRContent.WILLOW_FROG.get(),
+                NRContent.ASHEN_SKELETON.get(), NRContent.GHOST_BAT.get(), NRContent.EMBER_BAT.get(),
+                NRContent.GREEN_GLOWSHROOM_COW.get(), NRContent.BLUE_GLOWSHROOM_COW.get(), NRContent.PURPLE_GLOWSHROOM_COW.get(),
+                NRContent.CINDERLIN.get(), NRContent.HELLHOUND.get());
     }
 }

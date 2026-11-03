@@ -1,0 +1,24 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_nether",
+  "spawners": [
+    {
+      "type": "naturareimagined:ashen_skeleton",
+      "weight": 55,
+      "minCount": 2,
+      "maxCount": 4
+    },
+    {
+      "type": "naturareimagined:cinderlin",
+      "weight": 45,
+      "minCount": 2,
+      "maxCount": 4
+    },
+    {
+      "type": "naturareimagined:hellhound",
+      "weight": 40,
+      "minCount": 2,
+      "maxCount": 4
+    }
+  ]
+}

@@ -73,6 +73,10 @@ public final class NRBlockLoot extends BlockLootSubProvider {
             dropSelf(grass.block().get());
         }
         add(NRContent.GHOST_NYLIUM.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
+        add(NRContent.BLOOD_NYLIUM.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
+        add(NRContent.DARK_NYLIUM.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
+        add(NRContent.FUSE_NYLIUM.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
+        dropSelf(NRContent.PYREFLY_BUSH.get());
         dropSelf(NRContent.HEAT_SAND.get());
         dropSelf(NRContent.TAINTED_SOIL.get());
         dropSelf(NRContent.TAINTED_FARMLAND.get());
@@ -153,6 +157,10 @@ public final class NRBlockLoot extends BlockLootSubProvider {
             blocks.add(grass.block().get());
         }
         blocks.add(NRContent.GHOST_NYLIUM.get());
+        blocks.add(NRContent.BLOOD_NYLIUM.get());
+        blocks.add(NRContent.DARK_NYLIUM.get());
+        blocks.add(NRContent.FUSE_NYLIUM.get());
+        blocks.add(NRContent.PYREFLY_BUSH.get());
         blocks.add(NRContent.HEAT_SAND.get());
         blocks.add(NRContent.TAINTED_SOIL.get());
         blocks.add(NRContent.TAINTED_FARMLAND.get());

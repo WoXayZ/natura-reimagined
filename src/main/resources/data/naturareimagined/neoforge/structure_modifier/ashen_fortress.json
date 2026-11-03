@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "structures": "minecraft:fortress",
+  "spawners": [
+    {
+      "type": "naturareimagined:ashen_skeleton",
+      "weight": 12,
+      "minCount": 1,
+      "maxCount": 3
+    }
+  ]
+}

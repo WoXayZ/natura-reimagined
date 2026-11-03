@@ -1,0 +1,17 @@
+{
+  "feature": "naturareimagined:fusewood_tree",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 2
+    },
+    {
+      "type": "naturareimagined:clear_trunk",
+      "height": 10,
+      "radius": 5
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

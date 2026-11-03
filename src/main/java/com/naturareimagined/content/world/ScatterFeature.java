@@ -41,7 +41,7 @@ public class ScatterFeature extends Feature<SimpleBlockConfiguration> {
             return NRConfig.GENERATE_TAINTED_SOIL.get() && patch(context, state, Blocks.NETHERRACK);
         }
         if (block == NRContent.HEAT_SAND.get()) {
-            return NRConfig.GENERATE_HEAT_SAND.get() && patch(context, state, Blocks.NETHERRACK);
+            return heatSand(context, state);
         }
         return false;
     }
@@ -49,7 +49,7 @@ public class ScatterFeature extends Feature<SimpleBlockConfiguration> {
     private boolean saguaro(FeaturePlaceContext<SimpleBlockConfiguration> context) {
         WorldGenLevel level = context.level();
         BlockPos floor = context.origin().below();
-        if (!saguaroGround(level.getBlockState(floor))) {
+        if (!saguaroGround(level.getBlockState(floor)) || NetherSpace.nearBedrock(level, context.origin(), 16)) {
             return false;
         }
         int height = 2 + context.random().nextInt(2);
@@ -81,70 +81,77 @@ public class ScatterFeature extends Feature<SimpleBlockConfiguration> {
     private boolean cloud(FeaturePlaceContext<SimpleBlockConfiguration> context, BlockState state) {
         WorldGenLevel level = context.level();
         var random = context.random();
+        BlockPos origin = context.origin();
+        if (NetherSpace.nearBedrock(level, origin, 10)) {
+            return false;
+        }
         BlockState cloud = switch (random.nextInt(4)) {
             case 1 -> NRContent.DARK_CLOUD.get().defaultBlockState();
             case 2 -> NRContent.ASH_CLOUD.get().defaultBlockState();
             case 3 -> NRContent.SULFUR_CLOUD.get().defaultBlockState();
             default -> NRContent.WHITE_CLOUD.get().defaultBlockState();
         };
-        int radiusX;
-        int radiusY;
-        int radiusZ;
-        switch (random.nextInt(4)) {
-            case 1 -> {
-                radiusX = 5;
-                radiusY = 1;
-                radiusZ = 3;
-            }
-            case 2 -> {
-                radiusX = 6;
-                radiusY = 1;
-                radiusZ = 2;
-            }
-            case 3 -> {
-                radiusX = 3;
-                radiusY = 2;
-                radiusZ = 3;
-            }
-            default -> {
-                radiusX = 2;
-                radiusY = 1;
-                radiusZ = 2;
-            }
+        int lumps = 3 + random.nextInt(3);
+        double[] centerX = new double[lumps];
+        double[] centerY = new double[lumps];
+        double[] centerZ = new double[lumps];
+        double[] radiusX = new double[lumps];
+        double[] radiusY = new double[lumps];
+        double[] radiusZ = new double[lumps];
+        centerX[0] = 0;
+        centerY[0] = 0;
+        centerZ[0] = 0;
+        radiusX[0] = 3.5 + random.nextDouble() * 2.5;
+        radiusY[0] = 1.2 + random.nextDouble() * 1.1;
+        radiusZ[0] = 3.0 + random.nextDouble() * 2.5;
+        for (int lump = 1; lump < lumps; lump++) {
+            centerX[lump] = random.nextInt(7) - 3;
+            centerY[lump] = random.nextInt(3) - 1;
+            centerZ[lump] = random.nextInt(7) - 3;
+            radiusX[lump] = 1.6 + random.nextDouble() * 2.2;
+            radiusY[lump] = 0.8 + random.nextDouble() * 1.0;
+            radiusZ[lump] = 1.6 + random.nextDouble() * 2.2;
         }
-        if (random.nextBoolean()) {
-            int swap = radiusX;
-            radiusX = radiusZ;
-            radiusZ = swap;
-        }
-        BlockPos origin = context.origin();
-        if (this.cloudNearby(level, origin, radiusX + 3, radiusY + 2, radiusZ + 3)) {
+        if (this.cloudNearby(level, origin, 8, 4, 8)) {
             return false;
         }
         ArrayList<BlockPos> spots = new ArrayList<>();
-        for (int x = -radiusX; x <= radiusX; x++) {
-            for (int y = -radiusY; y <= radiusY; y++) {
-                for (int z = -radiusZ; z <= radiusZ; z++) {
-                    double nx = x / (double) Math.max(radiusX, 1);
-                    double ny = y / (double) Math.max(radiusY, 1);
-                    double nz = z / (double) Math.max(radiusZ, 1);
-                    if (nx * nx + ny * ny + nz * nz > 1.0D) {
+        for (int x = -7; x <= 7; x++) {
+            for (int y = -3; y <= 3; y++) {
+                for (int z = -7; z <= 7; z++) {
+                    double field = this.cloudEdge(origin.getX() + x, origin.getY() + y, origin.getZ() + z) * 0.22;
+                    for (int lump = 0; lump < lumps; lump++) {
+                        double dx = (x - centerX[lump]) / radiusX[lump];
+                        double dy = (y - centerY[lump]) / radiusY[lump];
+                        double dz = (z - centerZ[lump]) / radiusZ[lump];
+                        double distance = dx * dx + dy * dy + dz * dz;
+                        if (distance < 1.0) {
+                            field += (1.0 - distance) * (lump == 0 ? 1.0 : 0.75);
+                        }
+                    }
+                    if (field < 0.62) {
                         continue;
                     }
                     BlockPos pos = origin.offset(x, y, z);
-                    if (level.getBlockState(pos).isAir()) {
+                    if (level.getBlockState(pos).isAir() && !NetherSpace.nearBedrock(level, pos, 6)) {
                         spots.add(pos);
                     }
                 }
             }
         }
-        if (spots.size() < 8) {
+        if (spots.size() < 10) {
             return false;
         }
         for (BlockPos pos : spots) {
             level.setBlock(pos, cloud, Block.UPDATE_CLIENTS);
         }
         return true;
+    }
+
+    private double cloudEdge(int x, int y, int z) {
+        int n = x * 73428767 ^ y * 912839 ^ z * 4534567;
+        n = (n << 13) ^ n;
+        return 1.0 - ((n * (n * n * 15731 + 789221) + 1376312589) & 0x7fffffff) / 1073741824.0;
     }
 
     private boolean cloudNearby(WorldGenLevel level, BlockPos origin, int radiusX, int radiusY, int radiusZ) {
@@ -163,7 +170,8 @@ public class ScatterFeature extends Feature<SimpleBlockConfiguration> {
     private boolean glow(FeaturePlaceContext<SimpleBlockConfiguration> context, com.naturareimagined.content.plant.GlowshroomBlock glow) {
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
-        if (!level.getBlockState(pos).isAir() || !glow.defaultBlockState().canSurvive(level, pos)) {
+        if (!level.getBlockState(pos).isAir() || !glow.defaultBlockState().canSurvive(level, pos)
+                || NetherSpace.nearBedrock(level, pos, 16)) {
             return false;
         }
         com.naturareimagined.content.plant.GlowshroomBlock chosen = switch (context.random().nextInt(3)) {
@@ -181,7 +189,7 @@ public class ScatterFeature extends Feature<SimpleBlockConfiguration> {
     private boolean thorn(FeaturePlaceContext<SimpleBlockConfiguration> context, BlockState state) {
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
-        if (!level.getBlockState(pos).isAir()) {
+        if (!level.getBlockState(pos).isAir() || NetherSpace.nearBedrock(level, pos, 16)) {
             return false;
         }
         for (Direction direction : Direction.Plane.HORIZONTAL) {
@@ -194,12 +202,79 @@ public class ScatterFeature extends Feature<SimpleBlockConfiguration> {
         return false;
     }
 
+    private boolean heatSand(FeaturePlaceContext<SimpleBlockConfiguration> context, BlockState sand) {
+        if (!NRConfig.GENERATE_HEAT_SAND.get()) {
+            return false;
+        }
+        WorldGenLevel level = context.level();
+        BlockPos origin = context.origin();
+        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos(origin.getX(), 96, origin.getZ());
+        BlockPos surface = null;
+        for (int y = 96; y >= 8; y--) {
+            cursor.setY(y);
+            if (heatFloor(level, cursor)) {
+                surface = cursor.immutable();
+                break;
+            }
+        }
+        if (surface == null) {
+            return false;
+        }
+        int radius = 6 + context.random().nextInt(4);
+        boolean placed = false;
+        for (int x = -radius; x <= radius; x++) {
+            for (int z = -radius; z <= radius; z++) {
+                if (x * x + z * z > radius * radius) {
+                    continue;
+                }
+                BlockPos at = heatSurface(level, surface.offset(x, 0, z));
+                if (at == null) {
+                    continue;
+                }
+                level.setBlock(at, sand, Block.UPDATE_CLIENTS);
+                placed = true;
+            }
+        }
+        return placed;
+    }
+
+    private static BlockPos heatSurface(WorldGenLevel level, BlockPos pos) {
+        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+        for (int y = 2; y >= -2; y--) {
+            cursor.set(pos.getX(), pos.getY() + y, pos.getZ());
+            if (heatFloor(level, cursor)) {
+                return cursor.immutable();
+            }
+        }
+        return null;
+    }
+
+    private static boolean heatFloor(WorldGenLevel level, BlockPos pos) {
+        if (!netherGround(level.getBlockState(pos))) {
+            return false;
+        }
+        BlockPos below = pos.below();
+        BlockState support = level.getBlockState(below);
+        if (support.is(Blocks.BEDROCK) || !support.isFaceSturdy(level, below, Direction.UP)) {
+            return false;
+        }
+        return NetherSpace.openColumn(level, pos, 6);
+    }
+
+    private static boolean netherGround(BlockState state) {
+        return state.is(Blocks.NETHERRACK) || state.is(BlockTags.NYLIUM) || state.is(BlockTags.BASE_STONE_NETHER)
+                || state.is(Blocks.SOUL_SAND) || state.is(Blocks.SOUL_SOIL) || state.is(Blocks.GRAVEL)
+                || state.is(Blocks.BLACKSTONE) || state.is(Blocks.BASALT) || state.is(Blocks.SMOOTH_BASALT)
+                || state.is(NRContent.GHOST_NYLIUM.get()) || state.is(NRContent.BLOOD_NYLIUM.get())
+                || state.is(NRContent.DARK_NYLIUM.get()) || state.is(NRContent.FUSE_NYLIUM.get());
+    }
+
     private boolean patch(FeaturePlaceContext<SimpleBlockConfiguration> context, BlockState state, Block floor) {
         WorldGenLevel level = context.level();
         boolean placed = false;
         for (int i = 0; i < 24; i++) {
             BlockPos pos = context.origin().offset(context.random().nextInt(7) - 3, context.random().nextInt(3) - 1, context.random().nextInt(7) - 3);
-            if (level.getBlockState(pos).is(floor)) {
+            if (level.getBlockState(pos).is(floor) && !NetherSpace.nearBedrock(level, pos, 16)) {
                 level.setBlock(pos, state, Block.UPDATE_CLIENTS);
                 placed = true;
             }

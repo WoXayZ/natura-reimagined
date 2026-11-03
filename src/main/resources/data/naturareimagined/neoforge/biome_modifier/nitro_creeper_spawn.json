@@ -4,9 +4,9 @@
   "spawners": [
     {
       "type": "naturareimagined:nitro_creeper",
-      "weight": 8,
-      "minCount": 4,
-      "maxCount": 6
+      "weight": 35,
+      "minCount": 2,
+      "maxCount": 4
     }
   ]
 }

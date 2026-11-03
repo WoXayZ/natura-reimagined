@@ -1,14 +1,17 @@
-// 1.21.1	2026-11-03T11:21:15.8228781	Tags for minecraft:block mod id naturareimagined
+// 1.21.1	2026-11-03T13:10:41.9780044	Tags for minecraft:block mod id naturareimagined
 3d1d9674e225496535e9c986739bb98e5aa8d607 data/c/tags/block/bookshelves.json
 eb6f38c994699dba8e14fd6e2c5751868debc76d data/c/tags/block/fence_gates/wooden.json
 ca8710f5405ba89f1a4a420397a42a992b52f2e3 data/c/tags/block/stripped_logs.json
 6a68c1599e213eb7643a6145d3fa1ee0a07e381b data/c/tags/block/stripped_woods.json
+2044203902ce48cb2486068aa25dd38a4911dbec data/minecraft/tags/block/animals_spawnable_on.json
 4ae4f229bd92db5a6c9c5d3071877f9267716cb4 data/minecraft/tags/block/bee_growables.json
 479284c37269b9dfd25f3bb2163d6c4bf65a7c80 data/minecraft/tags/block/ceiling_hanging_signs.json
 0ce2597be7c70d3509fc79cc51218d05c8c08cfb data/minecraft/tags/block/climbable.json
 4ae4f229bd92db5a6c9c5d3071877f9267716cb4 data/minecraft/tags/block/crops.json
+2044203902ce48cb2486068aa25dd38a4911dbec data/minecraft/tags/block/dirt.json
 3d1d9674e225496535e9c986739bb98e5aa8d607 data/minecraft/tags/block/enchantment_power_provider.json
 eb6f38c994699dba8e14fd6e2c5751868debc76d data/minecraft/tags/block/fence_gates.json
+2044203902ce48cb2486068aa25dd38a4911dbec data/minecraft/tags/block/foxes_spawnable_on.json
 14bfe028abdd10f6519239ee9a4bdc07a1118ca7 data/minecraft/tags/block/infiniburn_nether.json
 6c57ed4851c7f0a02a342ab1e9f74755fe01fe47 data/minecraft/tags/block/leaves.json
 2f01abd90160a6414d0a37aaa3112a0827ed03a2 data/minecraft/tags/block/logs.json
@@ -16,9 +19,9 @@ a84b4705630be5c4b5027cbf926a73783f7f1fa9 data/minecraft/tags/block/logs_that_bur
 4ae4f229bd92db5a6c9c5d3071877f9267716cb4 data/minecraft/tags/block/maintains_farmland.json
 02e4caa0d069128c2a7826f3c8782a6ea06f8c33 data/minecraft/tags/block/mineable/axe.json
 6c57ed4851c7f0a02a342ab1e9f74755fe01fe47 data/minecraft/tags/block/mineable/hoe.json
-78e75d9c2a9d29526536e43414991aa62898be43 data/minecraft/tags/block/mineable/pickaxe.json
+a2ff92da92edbbc5540df789226cfed1d138a0ad data/minecraft/tags/block/mineable/pickaxe.json
 177e6f191d0fc6bf1c016b2de395508323f56b0a data/minecraft/tags/block/mineable/shovel.json
-6acae60d5aa74c2c707780d43f2ad4e966c36411 data/minecraft/tags/block/nylium.json
+700517a6a7b21bf065c0f4cab531afa0890eb6e5 data/minecraft/tags/block/nylium.json
 bdd17e13a933c76617ef96b4bcbd3b516fb7634d data/minecraft/tags/block/planks.json
 f78868db0a55b1815382b011270bd24f73cbb4b0 data/minecraft/tags/block/rails.json
 746b2525bc7e51ffde863f103b147fe5aec6db7c data/minecraft/tags/block/sand.json

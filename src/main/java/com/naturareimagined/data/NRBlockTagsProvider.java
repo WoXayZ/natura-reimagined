@@ -75,9 +75,12 @@ public final class NRBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.INFINIBURN_NETHER).add(NRContent.TAINTED_SOIL.get());
         tag(BlockTags.CLIMBABLE).add(NRContent.THORNVINE.get());
         tag(BlockTags.SWORD_EFFICIENT).add(NRContent.THORNVINE.get(), NRContent.SAGUARO.get(), NRContent.SAGUARO_FRUIT_BLOCK.get());
-        tag(BlockTags.NYLIUM).add(NRContent.GHOST_NYLIUM.get());
+        tag(BlockTags.NYLIUM).add(NRContent.GHOST_NYLIUM.get(), NRContent.BLOOD_NYLIUM.get(), NRContent.DARK_NYLIUM.get(), NRContent.FUSE_NYLIUM.get());
+        tag(BlockTags.DIRT).add(NRPlants.TOPIARY.block().get(), NRPlants.BLUEGRASS.block().get(), NRPlants.AUTUMNAL.block().get());
+        tag(BlockTags.ANIMALS_SPAWNABLE_ON).add(NRPlants.TOPIARY.block().get(), NRPlants.BLUEGRASS.block().get(), NRPlants.AUTUMNAL.block().get());
+        tag(BlockTags.FOXES_SPAWNABLE_ON).add(NRPlants.TOPIARY.block().get(), NRPlants.BLUEGRASS.block().get(), NRPlants.AUTUMNAL.block().get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                NRContent.GHOST_NYLIUM.get(),
+                NRContent.GHOST_NYLIUM.get(), NRContent.BLOOD_NYLIUM.get(), NRContent.DARK_NYLIUM.get(), NRContent.FUSE_NYLIUM.get(),
                 NRContent.SOUL_GLASS.get(), NRContent.HEAT_GLASS.get(),
                 NRContent.NETHERRACK_FURNACE.get(), NRContent.BLAZE_HOPPER.get(),
                 NRContent.BLAZE_RAIL.get(), NRContent.BLAZE_POWERED_RAIL.get(),

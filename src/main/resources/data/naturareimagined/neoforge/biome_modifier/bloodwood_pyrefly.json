@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "naturareimagined:bloodwood_wilds",
+  "features": "naturareimagined:pyrefly_bush_rare",
+  "step": "vegetal_decoration"
+}

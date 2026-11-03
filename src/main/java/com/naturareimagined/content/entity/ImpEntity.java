@@ -45,6 +45,17 @@ public class ImpEntity extends Animal {
                 .add(Attributes.MOVEMENT_SPEED, 0.28D);
     }
 
+    @Override
+    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType reason) {
+        return level instanceof ServerLevelAccessor server
+                && checkImpSpawn(NRContent.IMP.get(), server, reason, this.blockPosition(), this.random);
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double distance) {
+        return true;
+    }
+
     public static boolean checkImpSpawn(EntityType<ImpEntity> type, ServerLevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
         return NRConfig.SPAWN_IMP.get() && level.getBlockState(pos.below()).isSolid() && Mob.checkMobSpawnRules(type, level, reason, pos, random);
     }
@@ -81,11 +92,6 @@ public class ImpEntity extends Animal {
         if (this.getLoveCause() instanceof ServerPlayer player) {
             NRAdvancements.grant(player, "husbandry/breed_imp");
         }
-    }
-
-    @Override
-    public boolean checkSpawnRules(LevelAccessor level, MobSpawnType reason) {
-        return NRConfig.SPAWN_IMP.get() && super.checkSpawnRules(level, reason);
     }
 
     @Override

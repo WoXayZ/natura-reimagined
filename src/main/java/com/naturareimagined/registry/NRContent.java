@@ -2,10 +2,21 @@ package com.naturareimagined.registry;
 
 import com.naturareimagined.NaturaConstants;
 import com.naturareimagined.content.block.GhostNyliumBlock;
+import com.naturareimagined.content.block.NRNyliumBlock;
+import com.naturareimagined.content.entity.AmaranthBeeEntity;
+import com.naturareimagined.content.entity.AshenSkeletonEntity;
 import com.naturareimagined.content.entity.BabyHeatscarSpiderEntity;
+import com.naturareimagined.content.entity.CinderlinEntity;
+import com.naturareimagined.content.entity.EmberBatEntity;
+import com.naturareimagined.content.entity.GhostBatEntity;
+import com.naturareimagined.content.entity.GlowshroomCowEntity;
 import com.naturareimagined.content.entity.HeatscarSpiderEntity;
+import com.naturareimagined.content.entity.HellhoundEntity;
 import com.naturareimagined.content.entity.ImpEntity;
 import com.naturareimagined.content.entity.NitroCreeperEntity;
+import com.naturareimagined.content.entity.SakuraFoxEntity;
+import com.naturareimagined.content.entity.WillowFrogEntity;
+import com.naturareimagined.content.plant.PyreflyBushBlock;
 import com.naturareimagined.content.item.CactusJuiceItem;
 import com.naturareimagined.content.item.FlintAndBlazeItem;
 import com.naturareimagined.content.item.HatchetItem;
@@ -29,6 +40,8 @@ import com.naturareimagined.gameplay.ChestExtraModifier;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +50,14 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ambient.Bat;
+import net.minecraft.world.entity.animal.Bee;
+import net.minecraft.world.entity.animal.Cow;
+import net.minecraft.world.entity.animal.Fox;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
@@ -84,6 +105,8 @@ public final class NRContent {
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, NaturaConstants.MOD_ID);
     public static final DeferredRegister<EntityType<?>> ENTITIES =
             DeferredRegister.create(Registries.ENTITY_TYPE, NaturaConstants.MOD_ID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLES =
+            DeferredRegister.create(Registries.PARTICLE_TYPE, NaturaConstants.MOD_ID);
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS =
             DeferredRegister.create(Registries.ARMOR_MATERIAL, NaturaConstants.MOD_ID);
     public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS =
@@ -130,6 +153,17 @@ public final class NRContent {
 
     public static final DeferredBlock<GhostNyliumBlock> GHOST_NYLIUM = block("ghost_nylium", () -> new GhostNyliumBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.WARPED_NYLIUM).strength(0.4F).sound(SoundType.NYLIUM).randomTicks()));
+    public static final DeferredBlock<NRNyliumBlock> BLOOD_NYLIUM = block("blood_nylium", () -> new NRNyliumBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.CRIMSON_NYLIUM).strength(0.4F).sound(SoundType.NYLIUM).randomTicks()));
+    public static final DeferredBlock<NRNyliumBlock> DARK_NYLIUM = block("dark_nylium", () -> new NRNyliumBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BLACK).strength(0.4F).sound(SoundType.NYLIUM).randomTicks()));
+    public static final DeferredBlock<NRNyliumBlock> FUSE_NYLIUM = block("fuse_nylium", () -> new NRNyliumBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_ORANGE).strength(0.4F).sound(SoundType.NYLIUM).randomTicks()));
+    public static final DeferredBlock<PyreflyBushBlock> PYREFLY_BUSH = block("pyrefly_bush", () -> new PyreflyBushBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_YELLOW).instabreak().noCollission().sound(SoundType.GRASS).lightLevel(state -> 8)
+            .pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY)));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> PYREFLY_PARTICLE =
+            PARTICLES.register("pyrefly", () -> new SimpleParticleType(false));
     public static final DeferredBlock<HeatSandBlock> HEAT_SAND = block("heat_sand", () -> new HeatSandBlock(BlockBehaviour.Properties.of()
             .mapColor(MapColor.TERRACOTTA_ORANGE).strength(0.5F).sound(SoundType.SAND)));
     public static final DeferredBlock<TaintedSoilBlock> TAINTED_SOIL = block("tainted_soil", () -> new TaintedSoilBlock(BlockBehaviour.Properties.of()
@@ -228,15 +262,37 @@ public final class NRContent {
     public static final DeferredItem<ArmorItem> IMP_LEGGINGS = armor("imp_leggings", ArmorItem.Type.LEGGINGS);
     public static final DeferredItem<ArmorItem> IMP_BOOTS = armor("imp_boots", ArmorItem.Type.BOOTS);
 
-    public static final DeferredHolder<EntityType<?>, EntityType<ImpEntity>> IMP = ENTITIES.register("imp", () -> EntityType.Builder.of(ImpEntity::new, MobCategory.CREATURE).sized(0.9F, 1.5F).fireImmune().build("imp"));
+    public static final DeferredHolder<EntityType<?>, EntityType<ImpEntity>> IMP = ENTITIES.register("imp", () -> EntityType.Builder.of(ImpEntity::new, MobCategory.MONSTER).sized(0.9F, 1.5F).fireImmune().build("imp"));
     public static final DeferredHolder<EntityType<?>, EntityType<HeatscarSpiderEntity>> HEATSCAR = ENTITIES.register("heatscarspider", () -> EntityType.Builder.of(HeatscarSpiderEntity::new, MobCategory.MONSTER).sized(1.6F, 1.0F).fireImmune().build("heatscarspider"));
     public static final DeferredHolder<EntityType<?>, EntityType<BabyHeatscarSpiderEntity>> BABY_HEATSCAR = ENTITIES.register("baby_heatscarspider", () -> EntityType.Builder.of(BabyHeatscarSpiderEntity::new, MobCategory.MONSTER).sized(0.6F, 0.4F).fireImmune().build("baby_heatscarspider"));
     public static final DeferredHolder<EntityType<?>, EntityType<NitroCreeperEntity>> NITRO = ENTITIES.register("nitro_creeper", () -> EntityType.Builder.of(NitroCreeperEntity::new, MobCategory.MONSTER).sized(0.6F, 1.7F).fireImmune().build("nitro_creeper"));
+    public static final DeferredHolder<EntityType<?>, EntityType<SakuraFoxEntity>> SAKURA_FOX = ENTITIES.register("sakura_fox", () -> EntityType.Builder.of(SakuraFoxEntity::new, MobCategory.CREATURE).sized(0.6F, 0.7F).build("sakura_fox"));
+    public static final DeferredHolder<EntityType<?>, EntityType<AmaranthBeeEntity>> AMARANTH_BEE = ENTITIES.register("amaranth_bee", () -> EntityType.Builder.of(AmaranthBeeEntity::new, MobCategory.CREATURE).sized(0.7F, 0.6F).build("amaranth_bee"));
+    public static final DeferredHolder<EntityType<?>, EntityType<WillowFrogEntity>> WILLOW_FROG = ENTITIES.register("willow_frog", () -> EntityType.Builder.of(WillowFrogEntity::new, MobCategory.CREATURE).sized(0.5F, 0.5F).build("willow_frog"));
+    public static final DeferredHolder<EntityType<?>, EntityType<AshenSkeletonEntity>> ASHEN_SKELETON = ENTITIES.register("ashen_skeleton", () -> EntityType.Builder.of(AshenSkeletonEntity::new, MobCategory.MONSTER).sized(0.6F, 1.99F).fireImmune().build("ashen_skeleton"));
+    public static final DeferredHolder<EntityType<?>, EntityType<GhostBatEntity>> GHOST_BAT = ENTITIES.register("ghost_bat", () -> EntityType.Builder.of(GhostBatEntity::new, MobCategory.AMBIENT).sized(0.5F, 0.9F).fireImmune().build("ghost_bat"));
+    public static final DeferredHolder<EntityType<?>, EntityType<EmberBatEntity>> EMBER_BAT = ENTITIES.register("ember_bat", () -> EntityType.Builder.of(EmberBatEntity::new, MobCategory.AMBIENT).sized(0.5F, 0.9F).fireImmune().build("ember_bat"));
+    public static final DeferredHolder<EntityType<?>, EntityType<GlowshroomCowEntity>> GREEN_GLOWSHROOM_COW = ENTITIES.register("green_glowshroom_cow", () -> EntityType.Builder.of(GlowshroomCowEntity::new, MobCategory.CREATURE).sized(0.9F, 1.4F).build("green_glowshroom_cow"));
+    public static final DeferredHolder<EntityType<?>, EntityType<GlowshroomCowEntity>> BLUE_GLOWSHROOM_COW = ENTITIES.register("blue_glowshroom_cow", () -> EntityType.Builder.of(GlowshroomCowEntity::new, MobCategory.CREATURE).sized(0.9F, 1.4F).build("blue_glowshroom_cow"));
+    public static final DeferredHolder<EntityType<?>, EntityType<GlowshroomCowEntity>> PURPLE_GLOWSHROOM_COW = ENTITIES.register("purple_glowshroom_cow", () -> EntityType.Builder.of(GlowshroomCowEntity::new, MobCategory.CREATURE).sized(0.9F, 1.4F).build("purple_glowshroom_cow"));
+    public static final DeferredHolder<EntityType<?>, EntityType<CinderlinEntity>> CINDERLIN = ENTITIES.register("cinderlin", () -> EntityType.Builder.of(CinderlinEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).fireImmune().build("cinderlin"));
+    public static final DeferredHolder<EntityType<?>, EntityType<HellhoundEntity>> HELLHOUND = ENTITIES.register("hellhound", () -> EntityType.Builder.of(HellhoundEntity::new, MobCategory.MONSTER).sized(0.6F, 0.85F).fireImmune().build("hellhound"));
 
     public static final DeferredItem<SpawnEggItem> IMP_SPAWN_EGG = egg("imp_spawn_egg", IMP, 0xC45A12, 0x3A1A10);
     public static final DeferredItem<SpawnEggItem> HEATSCAR_SPAWN_EGG = egg("heatscarspider_spawn_egg", HEATSCAR, 0x6B1D12, 0x1A1A1A);
     public static final DeferredItem<SpawnEggItem> BABY_HEATSCAR_SPAWN_EGG = egg("baby_heatscarspider_spawn_egg", BABY_HEATSCAR, 0xE07A3D, 0x3A1A10);
     public static final DeferredItem<SpawnEggItem> NITRO_SPAWN_EGG = egg("nitro_creeper_spawn_egg", NITRO, 0xE4252A, 0x3A0A0C);
+    public static final DeferredItem<SpawnEggItem> SAKURA_FOX_SPAWN_EGG = egg("sakura_fox_spawn_egg", SAKURA_FOX, 0xF3C1D8, 0xFFFFFF);
+    public static final DeferredItem<SpawnEggItem> AMARANTH_BEE_SPAWN_EGG = egg("amaranth_bee_spawn_egg", AMARANTH_BEE, 0xC45AD4, 0x3A1030);
+    public static final DeferredItem<SpawnEggItem> WILLOW_FROG_SPAWN_EGG = egg("willow_frog_spawn_egg", WILLOW_FROG, 0x6A7039, 0x2A4A22);
+    public static final DeferredItem<SpawnEggItem> ASHEN_SKELETON_SPAWN_EGG = egg("ashen_skeleton_spawn_egg", ASHEN_SKELETON, 0x6B6560, 0xE7E2DC);
+    public static final DeferredItem<SpawnEggItem> GHOST_BAT_SPAWN_EGG = egg("ghost_bat_spawn_egg", GHOST_BAT, 0xD7E4DC, 0x6A8C7A);
+    public static final DeferredItem<SpawnEggItem> EMBER_BAT_SPAWN_EGG = egg("ember_bat_spawn_egg", EMBER_BAT, 0xE07A3D, 0x3A0A0C);
+    public static final DeferredItem<SpawnEggItem> GREEN_GLOWSHROOM_COW_SPAWN_EGG = egg("green_glowshroom_cow_spawn_egg", GREEN_GLOWSHROOM_COW, 0x4FA36A, 0xE8F6C8);
+    public static final DeferredItem<SpawnEggItem> BLUE_GLOWSHROOM_COW_SPAWN_EGG = egg("blue_glowshroom_cow_spawn_egg", BLUE_GLOWSHROOM_COW, 0x3A6BB5, 0xC8E4F6);
+    public static final DeferredItem<SpawnEggItem> PURPLE_GLOWSHROOM_COW_SPAWN_EGG = egg("purple_glowshroom_cow_spawn_egg", PURPLE_GLOWSHROOM_COW, 0x7A3AB5, 0xE4C8F6);
+    public static final DeferredItem<SpawnEggItem> CINDERLIN_SPAWN_EGG = egg("cinderlin_spawn_egg", CINDERLIN, 0xE07A3D, 0xF2D2A2);
+    public static final DeferredItem<SpawnEggItem> HELLHOUND_SPAWN_EGG = egg("hellhound_spawn_egg", HELLHOUND, 0x3A0A0C, 0xE4252A);
 
     public static final List<DeferredItem<? extends Item>> HATCHETS = List.of(
             WOODEN_HATCHET, STONE_HATCHET, IRON_HATCHET, GOLDEN_HATCHET, DIAMOND_HATCHET, NETHERITE_HATCHET, QUARTZ_HATCHET);
@@ -246,6 +302,7 @@ public final class NRContent {
     public static void register(IEventBus bus) {
         BLOCK_ENTITIES.register(bus);
         ENTITIES.register(bus);
+        PARTICLES.register(bus);
         ARMOR_MATERIALS.register(bus);
         LOOT_MODIFIERS.register(bus);
     }
@@ -255,6 +312,14 @@ public final class NRContent {
             case "blue" -> BLUE_GLOWSHROOM_STEM.get();
             case "purple" -> PURPLE_GLOWSHROOM_STEM.get();
             default -> GREEN_GLOWSHROOM_STEM.get();
+        };
+    }
+
+    public static Block glowshroom(String color) {
+        return switch (color) {
+            case "blue" -> BLUE_GLOWSHROOM.get();
+            case "purple" -> PURPLE_GLOWSHROOM.get();
+            default -> GREEN_GLOWSHROOM.get();
         };
     }
 
@@ -281,6 +346,17 @@ public final class NRContent {
         event.put(HEATSCAR.get(), HeatscarSpiderEntity.createAttributes().build());
         event.put(BABY_HEATSCAR.get(), HeatscarSpiderEntity.createAttributes().build());
         event.put(NITRO.get(), NitroCreeperEntity.createAttributes().build());
+        event.put(SAKURA_FOX.get(), Fox.createAttributes().build());
+        event.put(AMARANTH_BEE.get(), Bee.createAttributes().build());
+        event.put(WILLOW_FROG.get(), Frog.createAttributes().build());
+        event.put(ASHEN_SKELETON.get(), AbstractSkeleton.createAttributes().build());
+        event.put(GHOST_BAT.get(), Bat.createAttributes().build());
+        event.put(EMBER_BAT.get(), Bat.createAttributes().build());
+        event.put(GREEN_GLOWSHROOM_COW.get(), Cow.createAttributes().build());
+        event.put(BLUE_GLOWSHROOM_COW.get(), Cow.createAttributes().build());
+        event.put(PURPLE_GLOWSHROOM_COW.get(), Cow.createAttributes().build());
+        event.put(CINDERLIN.get(), Piglin.createAttributes().build());
+        event.put(HELLHOUND.get(), Wolf.createAttributes().build());
     }
 
     @SubscribeEvent
@@ -288,6 +364,25 @@ public final class NRContent {
         event.register(IMP.get(), net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND, net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ImpEntity::checkImpSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(HEATSCAR.get(), net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND, net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HeatscarSpiderEntity::checkHeatscarSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(NITRO.get(), net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND, net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, NitroCreeperEntity::checkNitroSpawn, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        var ground = net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND;
+        var height = net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES;
+        var replace = RegisterSpawnPlacementsEvent.Operation.REPLACE;
+        event.register(SAKURA_FOX.get(), ground, height, (type, level, reason, pos, random) -> Fox.checkFoxSpawnRules(EntityType.FOX, level, reason, pos, random), replace);
+        event.register(AMARANTH_BEE.get(), ground, height, net.minecraft.world.entity.animal.Animal::checkAnimalSpawnRules, replace);
+        event.register(WILLOW_FROG.get(), ground, height, Frog::checkFrogSpawnRules, replace);
+        event.register(ASHEN_SKELETON.get(), ground, height, net.minecraft.world.entity.monster.Monster::checkMonsterSpawnRules, replace);
+        event.register(GHOST_BAT.get(), ground, height, NRContent::checkNetherBatSpawn, replace);
+        event.register(EMBER_BAT.get(), ground, height, NRContent::checkNetherBatSpawn, replace);
+        event.register(CINDERLIN.get(), ground, height, (type, level, reason, pos, random) -> Piglin.checkPiglinSpawnRules(EntityType.PIGLIN, level, reason, pos, random), replace);
+        event.register(HELLHOUND.get(), ground, height, NRContent::checkHellhoundSpawn, replace);
+    }
+
+    public static boolean checkNetherBatSpawn(EntityType<? extends Bat> type, net.minecraft.world.level.LevelAccessor level, net.minecraft.world.entity.MobSpawnType spawnType, net.minecraft.core.BlockPos pos, net.minecraft.util.RandomSource random) {
+        return level.getBlockState(pos).isAir() && level.getBlockState(pos.below()).isSolidRender(level, pos.below());
+    }
+
+    public static boolean checkHellhoundSpawn(EntityType<HellhoundEntity> type, net.minecraft.world.level.LevelAccessor level, net.minecraft.world.entity.MobSpawnType spawnType, net.minecraft.core.BlockPos pos, net.minecraft.util.RandomSource random) {
+        return level.getBlockState(pos).isAir() && level.getBlockState(pos.below()).isSolidRender(level, pos.below());
     }
 
     private static DeferredBlock<CloudBlock> cloud(String name, boolean explodes, MapColor color) {
