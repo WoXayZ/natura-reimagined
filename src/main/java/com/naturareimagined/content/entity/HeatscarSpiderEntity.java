@@ -29,6 +29,10 @@ public class HeatscarSpiderEntity extends Spider {
         return Spider.createAttributes().add(Attributes.MAX_HEALTH, 50.0D).add(Attributes.MOVEMENT_SPEED, 0.3D);
     }
 
+    public static AttributeSupplier.Builder createBabyAttributes() {
+        return Spider.createAttributes().add(Attributes.MAX_HEALTH, 16.0D).add(Attributes.MOVEMENT_SPEED, 0.3D);
+    }
+
     public static boolean checkHeatscarSpawn(EntityType<HeatscarSpiderEntity> type, ServerLevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
         return NRConfig.SPAWN_HEATSCAR.get() && checkMonsterSpawnRules(type, level, reason, pos, random);
     }

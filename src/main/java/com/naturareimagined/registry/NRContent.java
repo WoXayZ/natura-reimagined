@@ -344,7 +344,7 @@ public final class NRContent {
     public static void attributes(EntityAttributeCreationEvent event) {
         event.put(IMP.get(), ImpEntity.createAttributes().build());
         event.put(HEATSCAR.get(), HeatscarSpiderEntity.createAttributes().build());
-        event.put(BABY_HEATSCAR.get(), HeatscarSpiderEntity.createAttributes().build());
+        event.put(BABY_HEATSCAR.get(), HeatscarSpiderEntity.createBabyAttributes().build());
         event.put(NITRO.get(), NitroCreeperEntity.createAttributes().build());
         event.put(SAKURA_FOX.get(), Fox.createAttributes().build());
         event.put(AMARANTH_BEE.get(), Bee.createAttributes().build());

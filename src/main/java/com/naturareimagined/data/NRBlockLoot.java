@@ -70,7 +70,7 @@ public final class NRBlockLoot extends BlockLootSubProvider {
                         .setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(CottonCropBlock.AGE, CottonCropBlock.MAX_AGE))));
         dropSelf(NRPlants.BLUEBELLS.get());
         for (NRPlants.GrassSet grass : NRPlants.GRASSES) {
-            dropSelf(grass.block().get());
+            add(grass.block().get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
         }
         add(NRContent.GHOST_NYLIUM.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));
         add(NRContent.BLOOD_NYLIUM.get(), block -> createSingleItemTableWithSilkTouch(block, Blocks.NETHERRACK));

@@ -18,9 +18,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.BatModel;
+import net.minecraft.client.model.BeeModel;
 import net.minecraft.client.model.CowModel;
 import net.minecraft.client.model.SpiderModel;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -111,15 +112,17 @@ public final class NREntityRenderers {
     }
 
     public static final class AmaranthBee extends BeeRenderer {
-        private final net.minecraft.client.model.geom.ModelPart bone;
-        private final net.minecraft.client.model.geom.ModelPart rightWing;
-        private final net.minecraft.client.model.geom.ModelPart leftWing;
+        private final ModelPart bone;
+        private final ModelPart rightWing;
+        private final ModelPart leftWing;
 
         public AmaranthBee(EntityRendererProvider.Context context) {
             super(context);
-            this.bone = context.bakeLayer(ModelLayers.BEE).getChild("bone");
-            this.rightWing = this.bone.getChild("right_wing");
-            this.leftWing = this.bone.getChild("left_wing");
+            WingedBee model = new WingedBee(context.bakeLayer(ModelLayers.BEE));
+            this.model = model;
+            this.bone = model.bone;
+            this.rightWing = model.rightWing;
+            this.leftWing = model.leftWing;
             this.addLayer(new Wings(this));
         }
 
@@ -173,6 +176,19 @@ public final class NREntityRenderers {
         }
     }
 
+    private static final class WingedBee extends BeeModel<Bee> {
+        private final ModelPart bone;
+        private final ModelPart rightWing;
+        private final ModelPart leftWing;
+
+        private WingedBee(ModelPart root) {
+            super(root);
+            this.bone = root.getChild("bone");
+            this.rightWing = this.bone.getChild("right_wing");
+            this.leftWing = this.bone.getChild("left_wing");
+        }
+    }
+
     public static final class WillowFrog extends FrogRenderer {
         public WillowFrog(EntityRendererProvider.Context context) {
             super(context);
@@ -211,7 +227,6 @@ public final class NREntityRenderers {
 
         public GhostBat(EntityRendererProvider.Context context) {
             super(context);
-            this.addLayer(new Eyes(this));
         }
 
         @Override
@@ -228,20 +243,6 @@ public final class NREntityRenderers {
                 return RenderType.outline(TEXTURE);
             }
             return RenderType.entityTranslucent(TEXTURE);
-        }
-
-        private static final class Eyes extends RenderLayer<Bat, BatModel> {
-            private static final RenderType EYES = RenderType.eyes(TEXTURE);
-
-            private Eyes(GhostBat parent) {
-                super(parent);
-            }
-
-            @Override
-            public void render(PoseStack pose, MultiBufferSource buffer, int light, Bat entity, float limbSwing, float limbSwingAmount, float partial, float age, float yaw, float pitch) {
-                VertexConsumer consumer = buffer.getBuffer(EYES);
-                this.getParentModel().renderToBuffer(pose, consumer, 15728880, net.minecraft.client.renderer.entity.LivingEntityRenderer.getOverlayCoords(entity, 0.0F));
-            }
         }
     }
 
